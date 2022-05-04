@@ -17,28 +17,28 @@ public class ClientServlet extends HttpServlet {
         //========================== Admin's Actions ============================\\
         if (Path.equalsIgnoreCase("/list.client")) {
             // get clients list
-            request.getRequestDispatcher("views/clients-list.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/clients/clients-list.jsp").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/add.client")) {
-            request.getRequestDispatcher("views/add-client.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/clients/add-client.jsp").forward(request, response);
 
         }if (Path.equalsIgnoreCase("/save.client")) {
             // get infos and save action (add,edit,delete) to database
-            request.getRequestDispatcher("views/clients-list.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/clients/clients-list.jsp").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/edit.client")) {
             //            Long userID = Long.valueOf(request.getParameter("id"));
             // get id and go to edit client
-            request.getRequestDispatcher("views/edit-client.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/clients/edit-client.jsp").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/delete.client")) {
 
 
             // get id and go to delete client
-            request.getRequestDispatcher("views/delete-client.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/clients/delete-client.jsp").forward(request, response);
 
 
             //========================== Client's Actions ============================\\
