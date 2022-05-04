@@ -1,5 +1,6 @@
 # Project Ignores Files
 /target
+target
 
 # Maven
 .mvn

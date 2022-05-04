@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Created-By: IntelliJ IDEA
-Built-By: Big Sam
-Build-Jdk: Amazon Corretto version 16.0.2
-
