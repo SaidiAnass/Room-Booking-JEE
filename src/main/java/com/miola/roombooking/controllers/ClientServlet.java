@@ -12,7 +12,9 @@ public class ClientServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         String Path = request.getServletPath();
-        //=========================================================================\\
+
+
+        //========================== Admin's Actions ============================\\
         if (Path.equalsIgnoreCase("/list.client")) {
             // get clients list
             request.getRequestDispatcher("views/clients-list.jsp").forward(request, response);
@@ -36,8 +38,10 @@ public class ClientServlet extends HttpServlet {
 
 
             // get id and go to delete client
-            request.getRequestDispatcher("views/clients-list.jsp").forward(request, response);
-            //=========================================================================\\
+            request.getRequestDispatcher("views/delete-client.jsp").forward(request, response);
+
+
+            //========================== Client's Actions ============================\\
         }else if (Path.equalsIgnoreCase("/sign-in.client")) {
             // get infos and authenticate
             request.getRequestDispatcher("index.jsp").forward(request, response);
