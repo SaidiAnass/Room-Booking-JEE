@@ -1,23 +1,35 @@
 package com.miola.roombooking.controllers;
 
+import com.miola.roombooking.dao.AdminDao;
+import com.miola.roombooking.models.Admin;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.LinkedList;
 
+@MultipartConfig
 @WebServlet(name = "AdminServlet", value = "*.admin")
 public class AdminServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        String Path = request.getServletPath();
+        String Path = request.getServletPath();AdminDao adminDao;
+             adminDao = new AdminDao();
+
 
 
         //========================== Admin's Actions ============================\\
         if (Path.equalsIgnoreCase("/list.admin")) {
             // get admins list
-            request.getRequestDispatcher("admin/admins-list.jsp").forward(request, response);
+            LinkedList<Admin> adminsList = adminDao.getAllAdmins();
+
+
+            request.setAttribute("adminsList" , adminsList);
+
+            request.getRequestDispatcher("admin/index.jsp").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/add.admin")) {
@@ -45,6 +57,6 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    doGet(request,response);
     }
 }
