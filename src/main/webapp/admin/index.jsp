@@ -1,16 +1,23 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Big Sam
-  Date: 5/4/2022
-  Time: 12:28 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Ansonika">
+    <title>Admin dashboard</title>
+
+
+
 </head>
-<body>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+
+<a href="../list.admin">Manage admins</a>
+
+
 
 </body>
 </html>

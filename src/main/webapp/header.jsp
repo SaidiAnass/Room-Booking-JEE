@@ -86,7 +86,10 @@
                             <a href="room-details.jsp" class="show-submenu">Room Details</a>
                         </li>
                         <li class="submenu">
-                            <a href="index.jsp" class="show-submenu">Home </a>
+                            <a href="checkout.jsp" class="show-submenu">Room Checkout</a>
+                        </li>
+                        <li class="submenu">
+                            <a href="thank-you.jsp" class="show-submenu">Thank you</a>
                         </li>
                     </ul>
                 </div><!-- End main-menu -->

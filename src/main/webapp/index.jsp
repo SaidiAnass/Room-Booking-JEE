@@ -17,7 +17,7 @@
                                     <p class="owl-slide-animated owl-slide-subtitle">
                                         Discover hidden wonders on trips curated by Citytours Tours Experts
                                     </p>
-                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="all_tours_list.html" role="button">Read more</a></div>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="all-rooms-list.jsp" role="button">Read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                     <p class="owl-slide-animated owl-slide-subtitle">
                                         Discover hidden wonders on trips curated by Citytours Tours Experts
                                     </p>
-                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="all_tours_list.html" role="button">Read more</a></div>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="all-rooms-list.jsp" role="button">Read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                     <p class="owl-slide-animated owl-slide-subtitle">
                                         Discover hidden wonders on trips curated by Citytours Tours Experts
                                     </p>
-                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="all_tours_list.html" role="button">Read more</a></div>
+                                    <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href="all-rooms-list.jsp" role="button">Read more</a></div>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +216,7 @@
         <!-- /carousel -->
 
         <p class="text-center nopadding">
-            <a href="pages/rooms-list.jsp" class="btn_1">View all Rooms</a>
+            <a href="all-rooms-list.jsp" class="btn_1">View all Rooms</a>
         </p>
 
     </div>
@@ -253,7 +253,7 @@
                     <div>
                         <h3>Your Perfect<br>Tour Experience</h3>
                         <p>Activities and accommodations</p>
-                        <a href="all_tours_list.html" class="btn_1">Read more</a>
+                        <a href="all-rooms-list.jsp" class="btn_1">Read more</a>
                     </div>
                 </div>
                 <!-- /wrapper -->
