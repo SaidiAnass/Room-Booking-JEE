@@ -6,13 +6,13 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "RoomServlet", value = "/*.room")
+@WebServlet(name = "RoomServlet", value = "*.room")
 public class RoomServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         String Path = request.getServletPath();
-        //=========================================================================\\
+        //========================== Admin's Actions ============================\\
         if (Path.equalsIgnoreCase("/list.room")) {
             // get rooms list
             request.getRequestDispatcher("admin/rooms/rooms-list.jsp").forward(request, response);
