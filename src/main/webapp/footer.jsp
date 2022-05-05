@@ -126,5 +126,6 @@
 <script src="assets/js/common_scripts_min.js"></script>
 <script src="assets/js/functions.js"></script>
 
+
 <!-- NOTIFY BUBBLES  -->
 <%--<script src="assets/js/notify_func.js"></script>--%>
