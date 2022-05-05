@@ -1,4 +1,3 @@
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -275,10 +274,10 @@
       <div class="table-title">
         <div class="row">
           <div class="col-sm-6">
-            <h2>Manage <b>Employees</b></h2>
+            <h2>Manage <b>Admins</b></h2>
           </div>
           <div class="col-sm-6">
-            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Employee</span></a>
+            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Admin</span></a>
           </div>
         </div>
       </div>
@@ -323,8 +322,12 @@
             <td>${admin.getEmail()}</td>
 
             <td>
-              <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+              <a href="edit.admin?id=${admin.getAdminId()}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
               <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+
+
+            <%--              <a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="${adminToEdit = admin}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>--%>
+<%--              <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
             </td>
               <%--                        <td>--%>
               <%--                            <a href="editUser.php?id=${u.id}" class="btn_1 small">Edit</a>--%>
@@ -334,18 +337,18 @@
         </c:forEach>
         </tbody>
       </table>
-      <div class="clearfix">
-        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-        <ul class="pagination">
-          <li class="page-item disabled"><a href="#">Previous</a></li>
-          <li class="page-item"><a href="#" class="page-link">1</a></li>
-          <li class="page-item"><a href="#" class="page-link">2</a></li>
-          <li class="page-item active"><a href="#" class="page-link">3</a></li>
-          <li class="page-item"><a href="#" class="page-link">4</a></li>
-          <li class="page-item"><a href="#" class="page-link">5</a></li>
-          <li class="page-item"><a href="#" class="page-link">Next</a></li>
-        </ul>
-      </div>
+<%--      <div class="clearfix">--%>
+<%--        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
+<%--        <ul class="pagination">--%>
+<%--          <li class="page-item disabled"><a href="#">Previous</a></li>--%>
+<%--          <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
+<%--          <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
+<%--          <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
+<%--          <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
+<%--          <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
+<%--          <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
+<%--        </ul>--%>
+<%--      </div>--%>
     </div>
   </div>
 </div>
@@ -353,7 +356,7 @@
 <div id="addEmployeeModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form action="add.admin" method="post" enctype="multipart/form-data">
         <div class="modal-header">
           <h4 class="modal-title">Add Employee</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -361,19 +364,19 @@
         <div class="modal-body">
           <div class="form-group">
             <label>First Name</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" required name="firstname"/>
           </div>
           <div class="form-group">
             <label>Last Name</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" required name="lastname"/>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" required>
+            <input type="email" class="form-control" required name="email"/>
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input class="form-control" type="password" required></input>
+            <input class="form-control" type="password" required name="password" />
           </div>
         </div>
         <div class="modal-footer">
@@ -388,27 +391,27 @@
 <div id="editEmployeeModal" class="modal fade">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form action="add.admin" method="post" enctype="multipart/form-data">
         <div class="modal-header">
-          <h4 class="modal-title">Edit Employee</h4>
+          <h4 class="modal-title">Add Employee</h4>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" required>
+            <label>First Name</label>
+            <input type="text" class="form-control" required name="firstname" value=${adminToEdit.getFirstName()}/>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" required name="lastname" value=${adminToEdit.getLastName()}/>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" class="form-control" required>
+            <input type="email" class="form-control" required name="email" value=${adminToEdit.getEmail()}/>
           </div>
           <div class="form-group">
-            <label>Address</label>
-            <textarea class="form-control" required></textarea>
-          </div>
-          <div class="form-group">
-            <label>Phone</label>
-            <input type="text" class="form-control" required>
+            <label>Password</label>
+            <input class="form-control" type="password" required name="password"/>
           </div>
         </div>
         <div class="modal-footer">
@@ -440,5 +443,36 @@
     </div>
   </div>
 </div>
+
+<c:choose>
+  <c:when test="${(adminToEdit.getFirstName() !='/')}">
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#editEmployeeModal').trigger('click');
+      });
+    </script>
+  </c:when>
+<%--  <c:when test="${another boolean expr}">--%>
+<%--    do something else--%>
+<%--  </c:when>--%>
+<%--  <c:otherwise>--%>
+<%--    do this when nothing else is true--%>
+<%--  </c:otherwise>--%>
+</c:choose>
+
+<%--<script type="text/javascript">--%>
+<%--  $(document).ready(function() {--%>
+<%--    $('form').submit(function (){--%>
+<%--      $.ajax({--%>
+<%--        type: "post",--%>
+<%--        url: "edit.admin",--%>
+<%--        data: "adminId=" + $('adminToEdit').val(),--%>
+<%--        success: function(msg){--%>
+<%--          //--%>
+<%--        }--%>
+<%--      });--%>
+<%--    });--%>
+<%--  });--%>
+<%--</script>--%>
 </body>
 </html>

@@ -25,32 +25,44 @@ public class AdminServlet extends HttpServlet {
         if (Path.equalsIgnoreCase("/list.admin")) {
             // get admins list
             LinkedList<Admin> adminsList = adminDao.getAllAdmins();
-
-
             request.setAttribute("adminsList" , adminsList);
 
-            request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manage-admins.jsp").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/add.admin")) {
-            request.getRequestDispatcher("admin/add-admin.jsp").forward(request, response);
+            Admin admin = new Admin();
+            admin.setFirstName(request.getParameter("firstname"));
+            admin.setLastName(request.getParameter("lastname"));
+            admin.setEmail(request.getParameter("email"));
+            admin.setPassword(request.getParameter("password"));
+
+            adminDao.addAdmin(admin);
+
+            request.getRequestDispatcher("/list.admin").forward(request, response);
 
         }if (Path.equalsIgnoreCase("/save.admin")) {
             // get infos and save action (add,edit,delete) to database
-            request.getRequestDispatcher("admin/admins-list.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manage-admins.jsp").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/edit.admin")) {
-            //            Long userID = Long.valueOf(request.getParameter("id"));
-            // get id and go to edit admin
-            request.getRequestDispatcher("admin/edit-admin.jsp").forward(request, response);
+            int id = Integer.parseInt(request.getParameter("id"));
+//             get id and go to edit admin
+            Admin adminToEdit = adminDao.getAdminById(id);
+            System.out.printf("Admin to Edit id: ", id);
+            request.setAttribute("adminToEdit" , adminToEdit);
+            if(adminToEdit.getAdminId() == id ){
+                request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+            }
+            request.getRequestDispatcher("admin/manage-admins.jsp").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/delete.admin")) {
 
 
             // get id and go to delete admin
-            request.getRequestDispatcher("admin/delete-admin.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/manage-admins.jsp").forward(request, response);
 
         }
     }
