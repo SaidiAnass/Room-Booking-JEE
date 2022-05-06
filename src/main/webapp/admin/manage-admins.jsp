@@ -37,36 +37,18 @@
                 <button type="submit" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></button>
 
               </form>
-<%--              <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
-              <form action="delete.admin" method="post" >
+         <form action="delete.admin" method="post" >
                 <input hidden value="${admin.getAdminId()}" name="id" />
                 <button type="submit" class="delte" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></button>
 
               </form>
+    </td>
 
-            <%--              <a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="${adminToEdit = admin}"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>--%>
-<%--              <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>--%>
-            </td>
-              <%--                        <td>--%>
-              <%--                            <a href="editUser.php?id=${u.id}" class="btn_1 small">Edit</a>--%>
-              <%--                            <a href="deleteUser.php?id=${u.id}" class="btn_1 small">Delete</a>--%>
-              <%--                        </td>--%>
           </tr>
         </c:forEach>
         </tbody>
       </table>
-<%--      <div class="clearfix">--%>
-<%--        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>--%>
-<%--        <ul class="pagination">--%>
-<%--          <li class="page-item disabled"><a href="#">Previous</a></li>--%>
-<%--          <li class="page-item"><a href="#" class="page-link">1</a></li>--%>
-<%--          <li class="page-item"><a href="#" class="page-link">2</a></li>--%>
-<%--          <li class="page-item active"><a href="#" class="page-link">3</a></li>--%>
-<%--          <li class="page-item"><a href="#" class="page-link">4</a></li>--%>
-<%--          <li class="page-item"><a href="#" class="page-link">5</a></li>--%>
-<%--          <li class="page-item"><a href="#" class="page-link">Next</a></li>--%>
-<%--        </ul>--%>
-<%--      </div>--%>
+
     </div>
   </div>
 </div>

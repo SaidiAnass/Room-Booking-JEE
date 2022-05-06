@@ -18,11 +18,11 @@
             <input type="text" class="form-control" required name="lastname" value="<%= client.getLastName() %>"/>
         </div>
         <div class="form-group">
-            <label>Last Name</label>
+            <label>Phone Number</label>
             <input type="text" class="form-control" required name="phonenumber" value="<%= client.getPhoneNumber() %>"/>
         </div>
         <div class="form-group">
-            <label>Last Name</label>
+            <label>Address</label>
             <input type="text" class="form-control" required name="address" value="<%= client.getAddress() %>"/>
         </div>
         <div class="form-group">

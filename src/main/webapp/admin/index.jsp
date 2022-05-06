@@ -127,6 +127,9 @@
 <a href="../list.admin">Manage admins</a>
 <br />
 <br />
+<a href="../list.client">Manage clients</a>
+<br />
+<br />
 
 <div class="row px-1 radio-group">
     <div class="card-block text-center radio">
