@@ -111,7 +111,7 @@
         <!-- /carousel -->
 
         <p class="text-center nopadding">
-            <a href="all-rooms-list.jsp" class="btn_1">View all Rooms</a>
+            <a href="get-all.room" class="btn_1">View all Rooms</a>
         </p>
 
     </div>

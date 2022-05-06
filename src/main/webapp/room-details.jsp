@@ -64,52 +64,21 @@
                 <!-- Map button for tablets/mobiles -->
                 <div id="Img_carousel" class="slider-pro">
                     <div class="sp-slides">
+                        <c:if test="${ (room.getRoomType().equals(\"lux\") )}">
+                            <div class="sp-slide">
+                                <img alt="Image" class="sp-image" src="https://i.pinimg.com/originals/d7/1f/79/d71f79e1e76221f35f5911488aeb8f0c.jpg" />
+                            </div>
+                            <div class="sp-slide">
+                                <img alt="Image" class="sp-image" src="https://media.cntraveler.com/photos/5f678a747557491753645012/master/w_4000,h_2666,c_limit/w-doha-qatar-suite.jpg" />
+                            </div>
+                        </c:if>
 
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/1_medium.jpg" data-small="img/slider_single_tour/1_small.jpg" data-medium="img/slider_single_tour/1_medium.jpg" data-large="img/slider_single_tour/1_large.jpg" data-retina="img/slider_single_tour/1_large.jpg">
-                        </div>
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/2_medium.jpg" data-small="img/slider_single_tour/2_small.jpg" data-medium="img/slider_single_tour/2_medium.jpg" data-large="img/slider_single_tour/2_large.jpg" data-retina="img/slider_single_tour/2_large.jpg">
-                        </div>
-
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/3_medium.jpg" data-small="img/slider_single_tour/3_small.jpg" data-medium="img/slider_single_tour/3_medium.jpg" data-large="img/slider_single_tour/3_large.jpg" data-retina="img/slider_single_tour/3_large.jpg">
-                        </div>
-
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/4_medium.jpg" data-small="img/slider_single_tour/4_small.jpg" data-medium="img/slider_single_tour/4_medium.jpg" data-large="img/slider_single_tour/4_large.jpg" data-retina="img/slider_single_tour/4_large.jpg">
-                        </div>
-
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/5_medium.jpg" data-small="img/slider_single_tour/5_small.jpg" data-medium="img/slider_single_tour/5_medium.jpg" data-large="img/slider_single_tour/5_large.jpg" data-retina="img/slider_single_tour/5_large.jpg">
-                        </div>
-
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/6_medium.jpg" data-small="img/slider_single_tour/6_small.jpg" data-medium="img/slider_single_tour/6_medium.jpg" data-large="img/slider_single_tour/6_large.jpg" data-retina="img/slider_single_tour/6_large.jpg">
-                        </div>
-
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/7_medium.jpg" data-small="img/slider_single_tour/7_small.jpg" data-medium="img/slider_single_tour/7_medium.jpg" data-large="img/slider_single_tour/7_large.jpg" data-retina="img/slider_single_tour/7_large.jpg">
-                        </div>
-
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/8_medium.jpg" data-small="img/slider_single_tour/8_small.jpg" data-medium="img/slider_single_tour/8_medium.jpg" data-large="img/slider_single_tour/8_large.jpg" data-retina="img/slider_single_tour/8_large.jpg">
-                        </div>
-
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/9_medium.jpg" data-small="img/slider_single_tour/9_small.jpg" data-medium="img/slider_single_tour/9_medium.jpg" data-large="img/slider_single_tour/9_large.jpg" data-retina="img/slider_single_tour/9_large.jpg">
-                        </div>
                     </div>
                     <div class="sp-thumbnails">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/1_medium.jpg">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/2_medium.jpg">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/3_medium.jpg">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/4_medium.jpg">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/5_medium.jpg">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/6_medium.jpg">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/7_medium.jpg">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/8_medium.jpg">
-                        <img alt="Image" class="sp-thumbnail" src="assets/img/slider_single_tour/9_medium.jpg">
+                        <c:if test="${ (room.getRoomType().equals(\"lux\") )}">
+                            <img alt="Image" class="sp-thumbnail" src="https://i.pinimg.com/originals/d7/1f/79/d71f79e1e76221f35f5911488aeb8f0c.jpg">
+                            <img alt="Image" class="sp-thumbnail" src="https://media.cntraveler.com/photos/5f678a747557491753645012/master/w_4000,h_2666,c_limit/w-doha-qatar-suite.jpg">
+                        </c:if>
                     </div>
                 </div>
 
@@ -121,7 +90,7 @@
                     </div>
                     <div class="col-lg-9">
                         <p>
-                            Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi. Eu ponderum mediocrem has, vitae adolescens in pro. Mea liber ridens inermis ei, mei legendos vulputate an, labitur tibique te qui.
+                            ${room.getDescription()}
                         </p>
                         <h4>Hotel facilities</h4>
                         <p>
@@ -159,92 +128,120 @@
                     <div class="col-lg-3">
                         <h3>Rooms Types</h3>
                     </div>
+
+
+
                     <div class="col-lg-9">
-                        <h4>Single Room</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi.
-                        </p>
+                        <c:if test="${ (room.getRoomType().equals(\"lux\") )}">
+                            <h4>Lux Room</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi.
+                            </p>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list_icons">
-                                    <li><i class="icon_set_1_icon-86"></i> Free wifi</li>
-                                    <li><i class="icon_set_2_icon-116"></i> Plasma Tv</li>
-                                    <li><i class="icon_set_2_icon-106"></i> Safety box</li>
-                                </ul>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list_icons">
+                                        <li><i class="icon_set_1_icon-86"></i> Free wifi</li>
+                                        <li><i class="icon_set_2_icon-116"></i> Plasma Tv</li>
+                                        <li><i class="icon_set_2_icon-106"></i> Safety box</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list_ok">
+                                        <li>Lorem ipsum dolor sit amet</li>
+                                        <li>No scripta electram necessitatibus sit</li>
+                                        <li>Quidam percipitur instructior an eum</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <ul class="list_ok">
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>No scripta electram necessitatibus sit</li>
-                                    <li>Quidam percipitur instructior an eum</li>
-                                </ul>
+                            <!-- End row  -->
+                            <div class="owl-carousel owl-theme carousel-thumbs-2 magnific-gallery">
+                                <div class="item">
+                                    <a href="https://purewows3.imgix.net/images/articles/2019_08/Grand_Velas.jpeg?auto=format,compress&cs=strip" data-effect="mfp-zoom-in"><img src="https://purewows3.imgix.net/images/articles/2019_08/Grand_Velas.jpeg?auto=format,compress&cs=strip" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="https://media.cntraveler.com/photos/53da5aa96dec627b149e509d/master/w_1024,h_768,c_limit/royal-ethiad-suite-jumeirah-abu-dhabi-2.jpg" data-effect="mfp-zoom-in"><img src="https://media.cntraveler.com/photos/53da5aa96dec627b149e509d/master/w_1024,h_768,c_limit/royal-ethiad-suite-jumeirah-abu-dhabi-2.jpg" alt="Image">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- End row  -->
-                        <div class="owl-carousel owl-theme carousel-thumbs-2 magnific-gallery">
-                            <div class="item">
-                                <a href="assets/img/carousel/1.jpg" data-effect="mfp-zoom-in"><img src="assets/img/carousel/1.jpg" alt="Image">
-                                </a>
+                            <!-- End photo carousel  -->
+
+                            <hr>
+                        </c:if>
+                        <c:if test="${ (room.getRoomType().equals(\"single\")) }">
+                            <h4>Single Room</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi.
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list_icons">
+                                        <li><i class="icon_set_1_icon-86"></i> Free wifi</li>
+                                        <li><i class="icon_set_2_icon-116"></i> Plasma Tv</li>
+                                        <li><i class="icon_set_2_icon-106"></i> Safety box</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list_ok">
+                                        <li>Lorem ipsum dolor sit amet</li>
+                                        <li>No scripta electram necessitatibus sit</li>
+                                        <li>Quidam percipitur instructior an eum</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="item">
-                                <a href="assets/img/carousel/2.jpg" data-effect="mfp-zoom-in"><img src="assets/img/carousel/2.jpg" alt="Image">
-                                </a>
+                            <!-- End row  -->
+                            <div class="owl-carousel owl-theme carousel-thumbs-2 magnific-gallery">
+                                <div class="item">
+                                    <a href="https://webbox.imgix.net/images/owvecfmxulwbfvxm/c56a0c0d-8454-431a-9b3e-f420c72e82e3.jpg" data-effect="mfp-zoom-in"><img src="https://webbox.imgix.net/images/owvecfmxulwbfvxm/c56a0c0d-8454-431a-9b3e-f420c72e82e3.jpg" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="http://hotel-elhidhab.com/wp-content/uploads/2019/10/single.jpg" data-effect="mfp-zoom-in"><img src="http://hotel-elhidhab.com/wp-content/uploads/2019/10/single.jpg" alt="Image">
+                                    </a>
+                                </div>
                             </div>
-                            <div class="item">
-                                <a href="assets/img/carousel/3.jpg" data-effect="mfp-zoom-in"><img src="assets/img/carousel/3.jpg" alt="Image">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="assets/img/carousel/4.jpg" data-effect="mfp-zoom-in"><img src="assets/img/carousel/4.jpg" alt="Image">
-                                </a>
-                            </div>
-                        </div>
+                        </c:if>
                         <!-- End photo carousel  -->
+                        <c:if test="${ (room.getRoomType().equals(\"double\")) }">
+                            <h4>Double Room</h4>
+                            <p>
+                                Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi.
+                            </p>
 
-                        <hr>
-
-                        <h4>Double Room</h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, at omnes deseruisse pri. Quo aeterno legimus insolens ad. Sit cu detraxit constituam, an mel iudico constituto efficiendi.
-                        </p>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <ul class="list_icons">
-                                    <li><i class="icon_set_1_icon-86"></i> Free wifi</li>
-                                    <li><i class="icon_set_2_icon-116"></i> Plasma Tv</li>
-                                    <li><i class="icon_set_2_icon-106"></i> Safety box</li>
-                                </ul>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="list_icons">
+                                        <li><i class="icon_set_1_icon-86"></i> Free wifi</li>
+                                        <li><i class="icon_set_2_icon-116"></i> Plasma Tv</li>
+                                        <li><i class="icon_set_2_icon-106"></i> Safety box</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="list_ok">
+                                        <li>Lorem ipsum dolor sit amet</li>
+                                        <li>No scripta electram necessitatibus sit</li>
+                                        <li>Quidam percipitur instructior an eum</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <ul class="list_ok">
-                                    <li>Lorem ipsum dolor sit amet</li>
-                                    <li>No scripta electram necessitatibus sit</li>
-                                    <li>Quidam percipitur instructior an eum</li>
-                                </ul>
+                            <!-- End row  -->
+                            <div class="owl-carousel owl-theme carousel-thumbs-2 magnific-gallery">
+                                <div class="item">
+                                    <a href="https://media-cdn.tripadvisor.com/media/photo-s/05/eb/3a/81/jeju-oriental-hotel.jpg" data-effect="mfp-zoom-in"><img src="https://media-cdn.tripadvisor.com/media/photo-s/05/eb/3a/81/jeju-oriental-hotel.jpg" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="https://cdn.traveltripper.io/site-assets/512_863_12597/media/2018-02-22-041437/large_DDBDB.jpg" data-effect="mfp-zoom-in"><img src="https://cdn.traveltripper.io/site-assets/512_863_12597/media/2018-02-22-041437/large_DDBDB.jpg" alt="Image">
+                                    </a>
+                                </div>
+                                <div class="item">
+                                    <a href="https://www.hotel7dublin.com/wp-content/uploads/Hotel-7-Dublin-family-room-with-2-double-beds.jpg" data-effect="mfp-zoom-in"><img src="https://www.hotel7dublin.com/wp-content/uploads/Hotel-7-Dublin-family-room-with-2-double-beds.jpg" alt="Image">
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <!-- End row  -->
-                        <div class="owl-carousel owl-theme carousel-thumbs-2 magnific-gallery">
-                            <div class="item">
-                                <a href="assets/img/carousel/1.jpg" data-effect="mfp-zoom-in"><img src="assets/img/carousel/1.jpg" alt="Image">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="assets/img/carousel/2.jpg" data-effect="mfp-zoom-in"><img src="assets/img/carousel/2.jpg" alt="Image">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="assets/img/carousel/3.jpg" data-effect="mfp-zoom-in"><img src="assets/img/carousel/3.jpg" alt="Image">
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="assets/img/carousel/4.jpg" data-effect="mfp-zoom-in"><img src="assets/img/carousel/4.jpg" alt="Image">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- End photo carousel  -->
+                        </c:if>
                     </div>
                     <!-- End col-md-9  -->
                 </div>
@@ -304,8 +301,8 @@
 <%--                </p>--%>
                 <div class="box_style_1 expose">
                     <h3 class="inner">Book this room</h3>
-                    <form action="" method="post">
-                        <input hidden value="${room.getRoomId()}" />
+                    <form action="book.room" method="post">
+                        <input hidden name="roomId" value="${room.getRoomId()}" />
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
