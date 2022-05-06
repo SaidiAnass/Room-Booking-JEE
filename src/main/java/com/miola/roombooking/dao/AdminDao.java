@@ -63,14 +63,15 @@ public class AdminDao {
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            System.out.printf("Here");
+
             while(rs.next()) {
+                System.out.println("Here");
                 return new Admin(rs.getInt("adminId"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"), rs.getString("password"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.printf("Admin not  found");
+        System.out.println("Admin not  found");
         return null;
     }
 
@@ -116,6 +117,15 @@ public class AdminDao {
 
 
     public void updateAdmin(Admin ad){
+        String query = "UPDATE admin SET firstName = '"+ad.getFirstName()+"', lastName = '"+ad.getLastName()+"', email = '"+ad.getEmail()+"', password = '"+ad.getPassword()+"' WHERE adminId LIKE "+ad.getAdminId();
+        System.out.println("Updatiing 2 ..");
 
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
     }
 }

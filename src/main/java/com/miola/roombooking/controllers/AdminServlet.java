@@ -43,26 +43,31 @@ public class AdminServlet extends HttpServlet {
 
         }if (Path.equalsIgnoreCase("/save.admin")) {
             // get infos and save action (add,edit,delete) to database
-            request.getRequestDispatcher("admin/manage-admins.jsp").forward(request, response);
+            Admin admin = new Admin();
+            admin.setFirstName(request.getParameter("firstname"));
+            admin.setLastName(request.getParameter("lastname"));
+            admin.setEmail(request.getParameter("email"));
+            admin.setPassword(request.getParameter("password"));
+            admin.setAdminId(Integer.parseInt(request.getParameter("id")));
+            adminDao.updateAdmin(admin);
+            request.getRequestDispatcher("/list.admin").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/edit.admin")) {
             int id = Integer.parseInt(request.getParameter("id"));
+            System.out.println("Id to edit: "+ id);
 //             get id and go to edit admin
             Admin adminToEdit = adminDao.getAdminById(id);
-            System.out.printf("Admin to Edit id: ", id);
             request.setAttribute("adminToEdit" , adminToEdit);
-            if(adminToEdit.getAdminId() == id ){
-                request.getRequestDispatcher("admin/index.jsp").forward(request, response);
-            }
-            request.getRequestDispatcher("admin/manage-admins.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/edit-admin.jsp").forward(request, response);
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/delete.admin")) {
-
+            int id = Integer.parseInt(request.getParameter("id"));
+            adminDao.deleteAdmin(adminDao.getAdminById(id));
 
             // get id and go to delete admin
-            request.getRequestDispatcher("admin/manage-admins.jsp").forward(request, response);
+            request.getRequestDispatcher("/list.admin").forward(request, response);
 
         }
     }
