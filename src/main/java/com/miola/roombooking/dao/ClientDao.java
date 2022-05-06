@@ -39,6 +39,24 @@ public class ClientDao {
         return null;
     }
 
+    public Client getClientByEmailAndPassword(String email , String password){
+        String query = "SELECT * FROM client WHERE email like '" + email +"' AND password like '"+password+"'";
+        Statement stmt ;
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                System.out.println("Here");
+                return new Client(rs.getInt("clientId"), rs.getString("firstName"), rs.getString("lastName"),rs.getString("phoneNumber"),rs.getString("address"), rs.getString("email"), rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Client not  found");
+        return null;
+    }
+
     public Client getClientByEmail(String email){
         String query = "SELECT * FROM client WHERE email like '" + email +"'";
         Statement stmt ;
