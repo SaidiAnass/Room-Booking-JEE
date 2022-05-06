@@ -353,19 +353,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12">
                             <div class="form-group">
-                                <label>Adults</label>
+                                <label>Number of Nights</label>
                                 <div class="numbers-row">
-                                    <input type="text" value="1" id="adults" class="qty2 form-control" name="quantity">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                <label>Children</label>
-                                <div class="numbers-row">
-                                    <input type="text" value="0" id="children" class="qty2 form-control" name="quantity">
+                                    <input type="text" value="1" id="numberofnights" class="qty2 form-control" name="numberofnights">
                                 </div>
                             </div>
                         </div>
@@ -397,126 +389,7 @@
 <!-- End main -->
 <%@include file="./footer.jsp" %>
 
-<!-- Modal Review -->
-<div class="modal fade" id="myReview" tabindex="-1" role="dialog" aria-labelledby="myReviewLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myReviewLabel">Write your review</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            </div>
-            <div class="modal-body">
-                <div id="message-review">
-                </div>
-                <form method="post" action="assets/review_hotel.php" name="review_hotel" id="review_hotel">
-                    <input name="hotel_name" id="hotel_name" type="hidden" value="Mariott Hotel Paris">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input name="name_review" id="name_review" type="text" placeholder="Your name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input name="lastname_review" id="lastname_review" type="text" placeholder="Your last name" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End row -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input name="email_review" id="email_review" type="email" placeholder="Your email" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <select class="form-control" name="room_type_review" id="room_type_review">
-                                    <option value="">Select room type</option>
-                                    <option value="Single room">Single Room</option>
-                                    <option value="Double Room">Double Room</option>
-                                    <option value="King double room">King Double Room</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End row -->
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Cleanliness</label>
-                                <select class="form-control" name="cleanliness_review" id="cleanliness_review">
-                                    <option value="">Please review</option>
-                                    <option value="Low">Low</option>
-                                    <option value="Sufficient">Sufficient</option>
-                                    <option value="Good">Good</option>
-                                    <option value="Excellent">Excellent</option>
-                                    <option value="Superb">Super</option>
-                                    <option value="Not rated">I don't know</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Comfort</label>
-                                <select class="form-control" name="comfort_review" id="comfort_review">
-                                    <option value="">Please review</option>
-                                    <option value="Low">Low</option>
-                                    <option value="Sufficient">Sufficient</option>
-                                    <option value="Good">Good</option>
-                                    <option value="Excellent">Excellent</option>
-                                    <option value="Superb">Super</option>
-                                    <option value="Not rated">I don't know</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End row -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Price</label>
-                                <select class="form-control" name="price_review" id="price_review">
-                                    <option value="">Please review</option>
-                                    <option value="Low">Low</option>
-                                    <option value="Sufficient">Sufficient</option>
-                                    <option value="Good">Good</option>
-                                    <option value="Excellent">Excellent</option>
-                                    <option value="Superb">Super</option>
-                                    <option value="Not rated">I don't know</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Quality</label>
-                                <select class="form-control" name="quality_review" id="quality_review">
-                                    <option value="">Please review</option>
-                                    <option value="Low">Low</option>
-                                    <option value="Sufficient">Sufficient</option>
-                                    <option value="Good">Good</option>
-                                    <option value="Excellent">Excellent</option>
-                                    <option value="Superb">Super</option>
-                                    <option value="Not rated">I don't know</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End row -->
-                    <div class="form-group">
-                        <textarea name="review_text" id="review_text" class="form-control" style="height:100px" placeholder="Write your review"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="verify_review" class=" form-control" placeholder="Are you human? 3 + 1 =">
-                    </div>
-                    <input type="submit" value="Submit" class="btn_1" id="submit-review">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End modal review -->
+
 
 <!-- Common scripts -->
 <script src="assets/js/jquery-2.2.4.min.js"></script>
