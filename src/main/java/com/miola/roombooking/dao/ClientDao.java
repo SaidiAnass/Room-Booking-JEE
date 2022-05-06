@@ -35,7 +35,7 @@ public class ClientDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("Admin not  found");
+        System.out.println("Client not  found");
         return null;
     }
 
@@ -90,8 +90,8 @@ public class ClientDao {
         if(cli.getEmail() == null || cli.getPassword() == null){
             return false;
         }
-        String query = "INSERT INTO admin (firstName,lastName,phoneNumber,address,email,password) VALUES" +
-                "('"+cli.getFirstName()+"','"+cli.getLastName()+"','"+cli.getEmail()+"','"+cli.getPhoneNumber()+"','"+cli.getAddress()+"','"+cli.getPassword()+"')";
+        String query = "INSERT INTO client (firstName,lastName,phoneNumber,address,email,password) VALUES" +
+                "('"+cli.getFirstName()+"','"+cli.getLastName()+"','"+cli.getPhoneNumber()+"','"+cli.getAddress()+"','"+cli.getEmail()+"','"+cli.getPassword()+"')";
         Statement stmt = null;
         int rs=0;
         try {
@@ -118,7 +118,16 @@ public class ClientDao {
         return rs > 0;
     }
 
-    public Client updateCLient(Client c){
-        return null;
+    public void updateClient(Client c){
+        String query = "UPDATE client SET firstName = '"+c.getFirstName()+"', lastName = '"+c.getLastName()+"', phoneNumber = '"+c.getPhoneNumber()+"', address = '"+ c.getAddress()+"', email = '"+c.getEmail()+"', password = '"+c.getPassword()+"' WHERE clientId LIKE "+c.getClientId();
+        System.out.println("Updatiing 2 ..");
+
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
     }
 }

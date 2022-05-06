@@ -1,7 +1,6 @@
 package com.miola.roombooking.controllers;
 
 import com.miola.roombooking.dao.ClientDao;
-import com.miola.roombooking.models.Admin;
 import com.miola.roombooking.models.Client;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -10,19 +9,20 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.LinkedList;
 
+@MultipartConfig
 @WebServlet(name = "ClientServlet", urlPatterns = "*.client")
 public class ClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
-        String Path = request.getServletPath();
-        ClientDao clientDao = new ClientDao();
+        String Path = request.getServletPath();ClientDao clientDao;
+        clientDao = new ClientDao();
 
         //========================== Admin's Actions ============================\\
         if (Path.equalsIgnoreCase("/list.client")) {
             // get admins list
-            LinkedList<Client> cLientsList = clientDao.getAllCLients();
-            request.setAttribute("cLientsList" , cLientsList);
+            LinkedList<Client> clientsList = clientDao.getAllCLients();
+            request.setAttribute("clientsList" , clientsList);
 
             request.getRequestDispatcher("admin/manage-clients.jsp").forward(request, response);
         }
@@ -32,7 +32,7 @@ public class ClientServlet extends HttpServlet {
             client.setFirstName(request.getParameter("firstname"));
             client.setLastName(request.getParameter("lastname"));
             client.setPhoneNumber(request.getParameter("phonenumber"));
-            client.setPhoneNumber(request.getParameter("address"));
+            client.setAddress(request.getParameter("address"));
             client.setEmail(request.getParameter("email"));
             client.setPassword(request.getParameter("password"));
 
@@ -43,14 +43,16 @@ public class ClientServlet extends HttpServlet {
         }if (Path.equalsIgnoreCase("/save.client")) {
             // get infos and save action (add,edit,delete) to database
             Client client = new Client();
+            int id = Integer.parseInt(request.getParameter("id"));
             client.setFirstName(request.getParameter("firstname"));
             client.setLastName(request.getParameter("lastname"));
             client.setPhoneNumber(request.getParameter("phonenumber"));
-            client.setPhoneNumber(request.getParameter("address"));
+            client.setAddress(request.getParameter("address"));
             client.setEmail(request.getParameter("email"));
             client.setPassword(request.getParameter("password"));
-            client.setClientId(Integer.parseInt(request.getParameter("id")));
-            clientDao.updateCLient(client);
+            client.setClientId(id);
+            System.out.println("ID :"+id);
+            clientDao.updateClient(client);
             request.getRequestDispatcher("/list.client").forward(request, response);
         }
         //=========================================================================\\

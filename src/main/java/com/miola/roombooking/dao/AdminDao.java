@@ -19,7 +19,7 @@ public class AdminDao {
         }
     }
 
-
+    /* All Admins */
     public LinkedList<Admin> getAllAdmins() {
         LinkedList<Admin> adminsList= new LinkedList<>();
 
@@ -41,7 +41,7 @@ public class AdminDao {
         return adminsList;
     }
 
-
+    /* Email => Admin */
     public Admin getAdminByEmail(String email){
         String query = "SELECT * FROM admin WHERE email like '" + email +"'";
         Statement stmt = null;
@@ -57,6 +57,8 @@ public class AdminDao {
 
         return null;
     }
+
+    /* Id => Admin */
     public Admin getAdminById(int id){
         String query = "SELECT * FROM admin WHERE adminId like '" + id +"'";
         Statement stmt = null;
@@ -98,9 +100,7 @@ public class AdminDao {
         return rs > 0;
     }
 
-
-
-
+    /* Delete Admin */
     public boolean deleteAdmin(Admin ad){
         String query = "DELETE FROM admin WHERE adminId like '"+ad.getAdminId()+"'";
         Statement stmt = null;
@@ -115,7 +115,7 @@ public class AdminDao {
         return rs > 0;
     }
 
-
+    /* Update Admin */
     public void updateAdmin(Admin ad){
         String query = "UPDATE admin SET firstName = '"+ad.getFirstName()+"', lastName = '"+ad.getLastName()+"', email = '"+ad.getEmail()+"', password = '"+ad.getPassword()+"' WHERE adminId LIKE "+ad.getAdminId();
         System.out.println("Updatiing 2 ..");
