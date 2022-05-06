@@ -83,7 +83,7 @@
                     <div class="hotel_container">
                         <div class="ribbon_3 popular"><span>Popular</span></div>
                         <div class="img_container">
-                            <a href="room-details.jsp">
+                            <a href="details.room?id=${room.getRoomId()}">
                                 <img src="assets/img/hotel_1.jpg" width="800" height="533" class="img-fluid" alt="image">
                                 <div class="score"><span>7.5</span>Good</div>
                                 <div class="short_info hotel">

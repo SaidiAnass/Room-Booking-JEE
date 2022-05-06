@@ -1,5 +1,7 @@
 package com.miola.roombooking.controllers;
 
+import com.miola.roombooking.dao.RoomDao;
+import com.miola.roombooking.models.Room;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -12,6 +14,7 @@ public class RoomServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         String Path = request.getServletPath();
+        RoomDao roomDao = new RoomDao();
         //========================== Admin's Actions ============================\\
         if (Path.equalsIgnoreCase("/list.room")) {
             // get rooms list
@@ -35,6 +38,11 @@ public class RoomServlet extends HttpServlet {
         else if (Path.equalsIgnoreCase("/delete.room")) {
             // get id and go to delete room
             request.getRequestDispatcher("admin/rooms/delete-room.jsp").forward(request, response);
+        }else if(Path.equalsIgnoreCase("/details.room")){
+            int roomId = Integer.parseInt(request.getParameter("id"));
+            Room room = roomDao.getRoomById(roomId);
+            request.setAttribute("room" , room);
+            request.getRequestDispatcher("room-details.jsp").forward(request, response);
         }
     }
 

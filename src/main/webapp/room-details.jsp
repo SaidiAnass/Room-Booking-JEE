@@ -1,5 +1,14 @@
+<%@ page import="com.miola.roombooking.models.Room" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
+<% Room room = (Room) request.getAttribute("room"); %>
+
+
+<c:if test="${ room.getName() == null }">
+    <c:redirect url="/main"/>
+</c:if>
+
 
 <<%@include file="./header.jsp" %>
 <section class="parallax-window" data-parallax="scroll" data-image-src="http://www.ansonika.com/citytours/img/single_hotel_bg_1.jpg" data-natural-width="1400" data-natural-height="470">
@@ -8,12 +17,11 @@
             <div class="row">
                 <div class="col-md-8">
                     <span class="rating"><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class=" icon-star-empty"></i></span>
-                    <h1>Mariott Hotel</h1>
-                    <span>Champ de Mars, 5 Avenue Anatole, 75007 Paris.</span>
+                    <h1><%= room.getName()%></h1>
                 </div>
                 <div class="col-md-4">
                     <div id="price_single_main" class="hotel">
-                        from/per night <span><sup>$</sup>95</span>
+                        from/per night <span><sup>$</sup><%=room.getPrice()%></span>
                     </div>
                 </div>
             </div>
@@ -28,18 +36,14 @@
             <ul>
                 <li><a href="#">Home</a>
                 </li>
-                <li><a href="#">Category</a>
+                <li><a href="#">Rooms</a>
                 </li>
-                <li>Page active</li>
+                <li><%= room.getName()%></li>
             </ul>
         </div>
     </div>
     <!-- End Position -->
 
-    <div class="collapse" id="collapseMap">
-        <div id="map" class="map"></div>
-    </div>
-    <!-- End Map -->
 
     <div class="container margin_60">
         <div class="row">
@@ -62,38 +66,38 @@
                     <div class="sp-slides">
 
                         <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/1_medium.jpg" data-small="img/slider_single_tour/1_small.jpg" data-medium="img/slider_single_tour/1_medium.jpg" data-large="img/slider_single_tour/1_large.jpg" data-retina="img/slider_single_tour/1_large.jpg">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/1_medium.jpg" data-small="img/slider_single_tour/1_small.jpg" data-medium="img/slider_single_tour/1_medium.jpg" data-large="img/slider_single_tour/1_large.jpg" data-retina="img/slider_single_tour/1_large.jpg">
                         </div>
                         <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/2_medium.jpg" data-small="img/slider_single_tour/2_small.jpg" data-medium="img/slider_single_tour/2_medium.jpg" data-large="img/slider_single_tour/2_large.jpg" data-retina="img/slider_single_tour/2_large.jpg">
-                        </div>
-
-                        <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/3_medium.jpg" data-small="img/slider_single_tour/3_small.jpg" data-medium="img/slider_single_tour/3_medium.jpg" data-large="img/slider_single_tour/3_large.jpg" data-retina="img/slider_single_tour/3_large.jpg">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/2_medium.jpg" data-small="img/slider_single_tour/2_small.jpg" data-medium="img/slider_single_tour/2_medium.jpg" data-large="img/slider_single_tour/2_large.jpg" data-retina="img/slider_single_tour/2_large.jpg">
                         </div>
 
                         <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/4_medium.jpg" data-small="img/slider_single_tour/4_small.jpg" data-medium="img/slider_single_tour/4_medium.jpg" data-large="img/slider_single_tour/4_large.jpg" data-retina="img/slider_single_tour/4_large.jpg">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/3_medium.jpg" data-small="img/slider_single_tour/3_small.jpg" data-medium="img/slider_single_tour/3_medium.jpg" data-large="img/slider_single_tour/3_large.jpg" data-retina="img/slider_single_tour/3_large.jpg">
                         </div>
 
                         <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/5_medium.jpg" data-small="img/slider_single_tour/5_small.jpg" data-medium="img/slider_single_tour/5_medium.jpg" data-large="img/slider_single_tour/5_large.jpg" data-retina="img/slider_single_tour/5_large.jpg">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/4_medium.jpg" data-small="img/slider_single_tour/4_small.jpg" data-medium="img/slider_single_tour/4_medium.jpg" data-large="img/slider_single_tour/4_large.jpg" data-retina="img/slider_single_tour/4_large.jpg">
                         </div>
 
                         <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/6_medium.jpg" data-small="img/slider_single_tour/6_small.jpg" data-medium="img/slider_single_tour/6_medium.jpg" data-large="img/slider_single_tour/6_large.jpg" data-retina="img/slider_single_tour/6_large.jpg">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/5_medium.jpg" data-small="img/slider_single_tour/5_small.jpg" data-medium="img/slider_single_tour/5_medium.jpg" data-large="img/slider_single_tour/5_large.jpg" data-retina="img/slider_single_tour/5_large.jpg">
                         </div>
 
                         <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/7_medium.jpg" data-small="img/slider_single_tour/7_small.jpg" data-medium="img/slider_single_tour/7_medium.jpg" data-large="img/slider_single_tour/7_large.jpg" data-retina="img/slider_single_tour/7_large.jpg">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/6_medium.jpg" data-small="img/slider_single_tour/6_small.jpg" data-medium="img/slider_single_tour/6_medium.jpg" data-large="img/slider_single_tour/6_large.jpg" data-retina="img/slider_single_tour/6_large.jpg">
                         </div>
 
                         <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/8_medium.jpg" data-small="img/slider_single_tour/8_small.jpg" data-medium="img/slider_single_tour/8_medium.jpg" data-large="img/slider_single_tour/8_large.jpg" data-retina="img/slider_single_tour/8_large.jpg">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/7_medium.jpg" data-small="img/slider_single_tour/7_small.jpg" data-medium="img/slider_single_tour/7_medium.jpg" data-large="img/slider_single_tour/7_large.jpg" data-retina="img/slider_single_tour/7_large.jpg">
                         </div>
 
                         <div class="sp-slide">
-                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="img/slider_single_tour/9_medium.jpg" data-small="img/slider_single_tour/9_small.jpg" data-medium="img/slider_single_tour/9_medium.jpg" data-large="img/slider_single_tour/9_large.jpg" data-retina="img/slider_single_tour/9_large.jpg">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/8_medium.jpg" data-small="img/slider_single_tour/8_small.jpg" data-medium="img/slider_single_tour/8_medium.jpg" data-large="img/slider_single_tour/8_large.jpg" data-retina="img/slider_single_tour/8_large.jpg">
+                        </div>
+
+                        <div class="sp-slide">
+                            <img alt="Image" class="sp-image" src="assets/css/images/blank.gif" data-src="assets/img/slider_single_tour/9_medium.jpg" data-small="img/slider_single_tour/9_small.jpg" data-medium="img/slider_single_tour/9_medium.jpg" data-large="img/slider_single_tour/9_large.jpg" data-retina="img/slider_single_tour/9_large.jpg">
                         </div>
                     </div>
                     <div class="sp-thumbnails">
@@ -289,44 +293,6 @@
                         </div>
                         <!-- End row -->
                         <hr>
-<%--                        <div class="review_strip_single">--%>
-<%--                            <img src="assets/img/avatar1.jpg" alt="Image" class="rounded-circle">--%>
-<%--                            <small> - 10 March 2015 -</small>--%>
-<%--                            <h4>Jhon Doe</h4>--%>
-<%--                            <p>--%>
-<%--                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."--%>
-<%--                            </p>--%>
-<%--                            <div class="rating">--%>
-<%--                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><i class="icon-smile"></i>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <!-- End review strip -->--%>
-
-<%--                        <div class="review_strip_single">--%>
-<%--                            <img src="assets/img/avatar2.jpg" alt="Image" class="rounded-circle">--%>
-<%--                            <small> - 10 March 2015 -</small>--%>
-<%--                            <h4>Jhon Doe</h4>--%>
-<%--                            <p>--%>
-<%--                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."--%>
-<%--                            </p>--%>
-<%--                            <div class="rating">--%>
-<%--                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><i class="icon-smile"></i>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <!-- End review strip -->--%>
-
-<%--                        <div class="review_strip_single last">--%>
-<%--                            <img src="assets/img/avatar3.jpg" alt="Image" class="rounded-circle">--%>
-<%--                            <small> - 10 March 2015 -</small>--%>
-<%--                            <h4>Jhon Doe</h4>--%>
-<%--                            <p>--%>
-<%--                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus."--%>
-<%--                            </p>--%>
-<%--                            <div class="rating">--%>
-<%--                                <i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile voted"></i><i class="icon-smile"></i><i class="icon-smile"></i>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <!-- End review strip -->--%>
                     </div>
                 </div>
             </div>
@@ -337,34 +303,38 @@
 <%--                    <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on map</a>--%>
 <%--                </p>--%>
                 <div class="box_style_1 expose">
-                    <h3 class="inner">Check Availability</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label><i class="icon-calendar-7"></i> Check in</label>
-                                <input class="date-pick form-control" data-date-format="M d, D" type="text">
+                    <h3 class="inner">Book this room</h3>
+                    <form action="" method="post">
+                        <input hidden value="${room.getRoomId()}" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><i class="icon-calendar-7"></i> Check in</label>
+                                    <input class="date-pick form-control" data-date-format="M d, D" type="text" name="start">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label><i class="icon-calendar-7"></i> Check out</label>
-                                <input class="date-pick form-control" data-date-format="M d, D" type="text">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label>Number of Nights</label>
-                                <div class="numbers-row">
-                                    <input type="text" value="1" id="numberofnights" class="qty2 form-control" name="numberofnights">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><i class="icon-calendar-7"></i> Check out</label>
+                                    <input class="date-pick form-control" data-date-format="M d, D" type="text" name="end">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label>Number of Nights</label>
+                                    <div class="numbers-row">
+                                        <input type="text" value="1" id="numberofnights" class="qty2 form-control" name="numberofnights">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
 
-                    <a class="btn_full" href="cart_hotel.html">Check now</a>
+                        <input type="submit" class="btn_full" value="Book"/>
+                    </form>
+
 <%--                    <a class="btn_full_outline" href="#"><i class=" icon-heart"></i> Add to whislist</a>--%>
                 </div>
                 <!--/box_style_1 -->
