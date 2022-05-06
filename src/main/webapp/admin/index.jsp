@@ -124,37 +124,36 @@
 
 <body class="fixed-nav sticky-footer" id="page-top">
 
-<a href="../list.admin">Manage admins</a>
-<br />
-<br />
-<a href="../list.client">Manage clients</a>
-<br />
-<br />
+<h1>Bonjour Admin!</h1>
 
 <div class="row px-1 radio-group">
     <div class="card-block text-center radio">
-        <div class="image-icon">
-            <img class="icon icon1" src="https://i.imgur.com/vZxfo9x.png">
-        </div>
-        <p class="sub-desc">One time paper cleanout</p>
+        <a href="../list.admin">
+            <div class="image-icon">
+                <img class="icon icon1" src="https://icons.veryicon.com/png/o/miscellaneous/yuanql/icon-admin.png">
+            </div>
+            <p class="sub-desc">Manage Admins</p>
+        </a>
+    </div>
+    <div class="card-block text-center radio">
+        <a href="../list.client">
+            <div class="image-icon">
+                <img class="icon icon1 fit-image" src="http://simpleicon.com/wp-content/uploads/users.png">
+            </div>
+            <p class="sub-desc">Manage Clients</p>
+        </a>
     </div>
     <div class="card-block text-center radio">
         <div class="image-icon">
-            <img class="icon icon1 fit-image" src="https://i.imgur.com/HnX40f4.png">
+            <img class="icon icon1 fit-image" src="https://cdn-icons-png.flaticon.com/512/100/100445.png">
         </div>
-        <p class="sub-desc">Shredding service on a regular schedule</p>
+        <p class="sub-desc">Manage Rooms</p>
     </div>
     <div class="card-block text-center radio">
         <div class="image-icon">
-            <img class="icon icon1 fit-image" src="https://i.imgur.com/ynKYPkk.png">
+            <img class="icon icon1 fit-image" src="https://icon-library.com/images/reservation-icon-png/reservation-icon-png-29.jpg">
         </div>
-        <p class="sub-desc">Hard Drive destruction</p>
-    </div>
-    <div class="card-block text-center radio">
-        <div class="image-icon">
-            <img class="icon icon1 fit-image" src="https://i.imgur.com/6qK7u8Q.png">
-        </div>
-        <p class="sub-desc">Other Material destruction</p>
+        <p class="sub-desc">Manage Bookings</p>
     </div>
 </div>
 

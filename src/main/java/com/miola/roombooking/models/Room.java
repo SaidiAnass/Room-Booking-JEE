@@ -6,8 +6,6 @@ public class Room {
     private String description;
     private String roomType;
     private double price;
-    private boolean isAvailabale;
     private boolean isBooked;
-    private boolean isAssigned;
 
 }

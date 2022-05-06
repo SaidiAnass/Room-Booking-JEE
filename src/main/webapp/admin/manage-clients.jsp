@@ -19,6 +19,8 @@
                     <th>Id</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
                     <th>Email</th>
                     <th>Actions</th>
                 </tr>
