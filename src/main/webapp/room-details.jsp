@@ -307,13 +307,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label><i class="icon-calendar-7"></i> Check in</label>
-                                    <input class="date-pick form-control" data-date-format="M d, D" type="text" name="start">
+                                    <input class="date-pick form-control" data-date-format="dd/mm/yyyy" type="text" name="start">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label><i class="icon-calendar-7"></i> Check out</label>
-                                    <input class="date-pick form-control" data-date-format="M d, D" type="text" name="end">
+                                    <input class="date-pick form-control" data-date-format="dd/mm/yyyy" type="text" name="end">
                                 </div>
                             </div>
                         </div>
@@ -328,8 +328,8 @@
                             </div>
                         </div>
                         <br>
-
                         <input type="submit" class="btn_full" value="Book"/>
+
                     </form>
 
 <%--                    <a class="btn_full_outline" href="#"><i class=" icon-heart"></i> Add to whislist</a>--%>

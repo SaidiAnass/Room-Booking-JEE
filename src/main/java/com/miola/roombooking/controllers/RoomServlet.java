@@ -1,6 +1,9 @@
 package com.miola.roombooking.controllers;
 
+import com.miola.roombooking.dao.BookingDao;
 import com.miola.roombooking.dao.RoomDao;
+import com.miola.roombooking.models.Booking;
+import com.miola.roombooking.models.Client;
 import com.miola.roombooking.models.Room;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -9,6 +12,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.LinkedList;
 
+@MultipartConfig
 @WebServlet(name = "RoomServlet", value = "*.room")
 public class RoomServlet extends HttpServlet {
     @Override
@@ -16,6 +20,7 @@ public class RoomServlet extends HttpServlet {
         response.setContentType("text/html");
         String Path = request.getServletPath();
         RoomDao roomDao = new RoomDao();
+        BookingDao bookingDao = new BookingDao();
         //========================== Admin's Actions ============================\\
         if (Path.equalsIgnoreCase("/list.room")) {
             // get rooms list
@@ -53,11 +58,24 @@ public class RoomServlet extends HttpServlet {
             request.setAttribute("rooms" , rooms);
             request.getRequestDispatcher("all-rooms-list.jsp").forward(request, response);
         }else if(Path.equalsIgnoreCase("/book.room")){
-            int roomId = Integer.parseInt(request.getParameter("id")) ;
+            int roomId = Integer.parseInt(request.getParameter("roomId")) ;
             int numberOfNights = Integer.parseInt(request.getParameter("numberofnights")) ;
             String startDate = request.getParameter("start");
             String endDate = request.getParameter("end");
+            Client client = (Client) request.getSession().getAttribute("loggedIn");
+            Room room = roomDao.getRoomById(roomId);
+            if(client != null){
+                Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
+                bookingDao.addBooking(booking);
+                request.setAttribute("booking",booking);
+                request.getRequestDispatcher("thank-you.jsp").forward(request, response);
+            }
+            request.setAttribute("roomId" ,roomId);
+            request.setAttribute("numberOfNights" ,numberOfNights);
+            request.setAttribute("startDate" ,startDate);
+            request.setAttribute("endDate" ,endDate);
             request.getRequestDispatcher("checkout.jsp").forward(request, response);
+
         }
     }
 

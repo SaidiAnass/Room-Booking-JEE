@@ -53,7 +53,7 @@ public class Room {
         this.roomType = roomType;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
