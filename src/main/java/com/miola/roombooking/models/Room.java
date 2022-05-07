@@ -4,6 +4,7 @@ public class Room {
     private int roomId;
     private String name;
     private String description;
+    private String image;
     private String roomType;
     private float price;
     private boolean isBooked;
@@ -12,14 +13,16 @@ public class Room {
     public Room() {
     }
 
-    public Room(int roomId, String name, String description, String roomType, float price, boolean isBooked) {
+    public Room(int roomId, String name, String description,String image, String roomType, float price, boolean isBooked) {
         this.roomId = roomId;
         this.name = name;
         this.description = description;
+        this.image=image;
         this.roomType = roomType;
         this.price = price;
         this.isBooked = isBooked;
     }
+
 
     public int getRoomId() {
         return roomId;
@@ -43,6 +46,14 @@ public class Room {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getRoomType() {
