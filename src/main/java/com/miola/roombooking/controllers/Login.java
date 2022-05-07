@@ -22,7 +22,10 @@ public class Login extends HttpServlet {
             String password = request.getParameter("password");
 
             Client loggedIn = clientDao.getClientByEmailAndPassword(email,password);
-            request.getSession().setAttribute("loggedIn" , loggedIn);
+            if(loggedIn != null ){
+                request.getSession().setAttribute("loggedIn" , loggedIn);
+            }
+
 
             request.getRequestDispatcher("index.jsp").forward(request, response);
             //=========================================================================\\
@@ -30,7 +33,27 @@ public class Login extends HttpServlet {
             request.getSession().invalidate();
             request.getRequestDispatcher("index.jsp").forward(request, response);
             //=========================================================================\\
+        } else if (Path.equalsIgnoreCase("/client-register.auth")) {
+            Client client = new Client();
+            client.setFirstName(request.getParameter("firstname"));
+            client.setLastName(request.getParameter("lastname"));
+            client.setPhoneNumber(request.getParameter("phonenumber"));
+            client.setAddress(request.getParameter("address"));
+            client.setEmail(request.getParameter("email"));
+            client.setPassword(request.getParameter("password"));
+            clientDao.addClient(client);
+
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            client = clientDao.getClientByEmailAndPassword(email, password);
+            if (client != null) {
+                request.getSession().setAttribute("loggedIn", client);
+            }
+
+
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
+            //=========================================================================\\
 //        if (Path.equalsIgnoreCase("/admin-login.auth")) {
 //            // get infos and authenticate
 //            String email = request.getParameter("email");

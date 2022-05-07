@@ -60,6 +60,7 @@
 
                         <c:if test="${ (loggedIn == null )}">
                             <li><a href="#sign-in-dialog" id="access_link">Sign in</a></li>
+                            <li><a href="register.jsp" >Create new account</a></li>
                         </c:if>
 
                     </ul>
