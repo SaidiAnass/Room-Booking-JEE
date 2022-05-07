@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Phone Number</label>
-                                <input type="text" class=" form-control"  placeholder="Phone Number" name="phonenumber" pattern="0[0123456789]{9}$" required>
+                                <input type="text" class=" form-control"  placeholder="0673620344" name="phonenumber" pattern="0[0123456789]{9}$" required>
                             </div>
                             <div class="form-group">
                                 <label>Address</label>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class=" form-control" placeholder="Email"n ame="email" required>
+                                <input type="email" class=" form-control" placeholder="Email" name="email" required>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>

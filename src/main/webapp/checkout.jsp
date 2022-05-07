@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                         <label>Phone Number<sup>*</sup></label>
-                                        <input type="text" name="phonenumber" value="" placeholder="" class="form-control" required pattern="0[0123456789]{9}$">
+                                        <input type="text" name="phonenumber" value="" placeholder="0673620344" class="form-control" required pattern="0[0123456789]{9}$">
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                         <label>Address <sup>*</sup>
