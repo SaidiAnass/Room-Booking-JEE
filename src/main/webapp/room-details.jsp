@@ -340,26 +340,26 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label><i class="icon-calendar-7"></i> Check in</label>
-                                    <input class="date-pick form-control" data-date-format="dd/mm/yyyy" type="text" name="start">
+                                    <input class="date-pick form-control" data-date-format="mm/dd/yyyy" type="text" name="start">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label><i class="icon-calendar-7"></i> Check out</label>
-                                    <input class="date-pick form-control" data-date-format="dd/mm/yyyy" type="text" name="end">
+                                    <input class="date-pick form-control" data-date-format="mm/dd/yyyy" type="text" name="end">
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label>Number of Nights</label>
-                                    <div class="numbers-row">
-                                        <input type="text" value="1" id="numberofnights" class="qty2 form-control" name="numberofnights">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<%--                        <div class="row">--%>
+<%--                            <div class="col-12">--%>
+<%--                                <div class="form-group">--%>
+<%--                                    <label>Number of Nights</label>--%>
+<%--                                    <div class="numbers-row">--%>
+<%--                                        <input type="text" value="1" id="numberofnights" class="qty2 form-control" name="numberofnights">--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                         <br>
                         <input type="submit" class="btn_full" value="Book"/>
 

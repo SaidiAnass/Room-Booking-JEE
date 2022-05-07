@@ -6,11 +6,15 @@ import com.miola.roombooking.dao.RoomDao;
 import com.miola.roombooking.models.Booking;
 import com.miola.roombooking.models.Client;
 import com.miola.roombooking.models.Room;
+import com.miola.roombooking.utils.Functions;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @MultipartConfig
 @WebServlet(name = "BookingServlet", value = "*.booking")
@@ -50,7 +54,6 @@ public class BookingServlet extends HttpServlet {
         //========================== Admin's Actions ============================\\
         else if (Path.equalsIgnoreCase("/login.booking")) {
             int roomId = Integer.parseInt(request.getParameter("roomId")) ;
-            int numberOfNights = Integer.parseInt(request.getParameter("numberOfNights")) ;
             String startDate = request.getParameter("startDate");
             String endDate = request.getParameter("endDate");
             String email = request.getParameter("email");
@@ -61,16 +64,29 @@ public class BookingServlet extends HttpServlet {
             if (client != null) {
                 request.getSession().setAttribute("loggedIn" , client);
                 Room room = roomDao.getRoomById(roomId);
-                Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
-                bookingDao.addBooking(booking);
-                request.setAttribute("booking",booking);
-                request.setAttribute("room", room);
-                request.setAttribute("client", client);
-                returnPage = "thanks.jsp";
+
+                int numberOfNights = Functions.getNumberOfNights(startDate,endDate);
+                if(numberOfNights == -1){
+                    request.setAttribute("error", "Room is unvailable at tha date!");
+                    returnPage = "404.jsp";
+                }else{
+                    Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
+                    boolean isBooked = bookingDao.addBooking(booking);
+                    if(isBooked){
+                        request.setAttribute("booking",booking);
+                        request.setAttribute("room", room);
+                        request.setAttribute("client", client);
+                        returnPage = "thanks.jsp";
+                    }else {
+                        request.setAttribute("error", "Room is unvailable at tha date!");
+                        returnPage = "404.jsp";
+                    }
+                }
+
+
             }
 
             request.getRequestDispatcher(returnPage).forward(request, response);
-//            response.sendRedirect(returnPage);
             return;
 
 
@@ -78,7 +94,6 @@ public class BookingServlet extends HttpServlet {
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/register.booking")) {
             int roomId = Integer.parseInt(request.getParameter("roomId")) ;
-            int numberOfNights = Integer.parseInt(request.getParameter("numberOfNights")) ;
             String startDate = request.getParameter("startDate");
             String endDate = request.getParameter("endDate");
 
@@ -101,16 +116,28 @@ public class BookingServlet extends HttpServlet {
             if (client != null) {
                 request.getSession().setAttribute("loggedIn" , client);
                 Room room = roomDao.getRoomById(roomId);
-                Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
-                bookingDao.addBooking(booking);
-                request.setAttribute("booking",booking);
-                request.setAttribute("room", room);
-                request.setAttribute("client", client);
-                returnPage = "thanks.jsp";
+                int numberOfNights = Functions.getNumberOfNights(startDate,endDate);
+                if(numberOfNights == -1){
+                    request.setAttribute("error", "Room is unvailable at tha date!");
+                    returnPage = "404.jsp";
+                }else{
+                    Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
+                    boolean isBooked = bookingDao.addBooking(booking);
+                    if(isBooked){
+                        request.setAttribute("booking",booking);
+                        request.setAttribute("room", room);
+                        request.setAttribute("client", client);
+                        returnPage = "thanks.jsp";
+                    }else {
+                        request.setAttribute("error", "Room is unvailable at tha date!");
+                        returnPage = "404.jsp";
+                    }
+                }
+
+
             }
 
             request.getRequestDispatcher(returnPage).forward(request, response);
-//            response.sendRedirect(returnPage);
             return;
         }
     }

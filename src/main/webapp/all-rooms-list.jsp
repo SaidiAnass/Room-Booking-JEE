@@ -6,11 +6,11 @@
     <c:redirect url="/get-all.room"/>
 </c:if>
 
-<section class="parallax-window" data-parallax="scroll" data-image-src="assets/img/hotels_bg.jpg" data-natural-width="1400" data-natural-height="470">
+<section class="parallax-window" data-parallax="scroll" data-image-src="http://www.ansonika.com/citytours/img/hotels_bg.jpg" data-natural-width="1400" data-natural-height="470">
     <div class="parallax-content-1">
         <div class="animated fadeInDown">
-            <h1>Paris Hotels</h1>
-            <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
+            <h1>All rooms</h1>
+            <p>Discover our best available rooms with the best prices in the market!</p>
         </div>
     </div>
 </section>
