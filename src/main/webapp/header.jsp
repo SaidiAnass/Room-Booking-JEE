@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,9 +53,16 @@
                 <div class="col-6"><i class="icon-phone"></i><strong>0045 043204434</strong></div>
                 <div class="col-6">
                     <ul id="top_links">
-                        <li><a href="#sign-in-dialog" id="access_link">Sign in</a></li>
-                        <li><a href="wishlist.html" id="wishlist_link">Wishlist</a></li>
-                        <li><a href="http://themeforest.net/item/citytours-city-tours-tour-tickets-and-guides/10715647?ref=ansonika">Purchase this template</a></li>
+                        <c:if test="${ (loggedIn != null )}">
+                            <li>Hello, ${loggedIn.getFirstName()}!</li>
+                            <li><a href="client-logout.auth">Sign out</a></li>
+                        </c:if>
+
+                        <c:if test="${ (loggedIn == null )}">
+                            <li><a href="#sign-in-dialog" id="access_link">Sign in</a></li>
+                            <li><a href="register.jsp" >Create new account</a></li>
+                        </c:if>
+
                     </ul>
                 </div>
             </div><!-- End row -->
@@ -89,7 +97,7 @@
                             <a href="checkout.jsp" class="show-submenu">Room Checkout</a>
                         </li>
                         <li class="submenu">
-                            <a href="thank-you.jsp" class="show-submenu">Thank you</a>
+                            <a href="thanks.jsp" class="show-submenu">Thank you</a>
                         </li>
                     </ul>
                 </div><!-- End main-menu -->

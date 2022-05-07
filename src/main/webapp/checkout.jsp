@@ -2,6 +2,10 @@
 <html lang="en">
 
 <%@include file="./header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${ roomId == null }">
+    <c:redirect url="/main"/>
+</c:if>
 
 <section class="parallax-window" data-parallax="scroll" data-image-src="img/header_bg.jpg" data-natural-width="1400" data-natural-height="470">
     <div class="parallax-content-1">
@@ -19,9 +23,9 @@
             <ul>
                 <li><a href="#">Home</a>
                 </li>
-                <li><a href="#">Category</a>
+                <li><a href="#">Checkout</a>
                 </li>
-                <li>Page active</li>
+<%--                <li>Page active</li>--%>
             </ul>
         </div>
     </div>
@@ -30,63 +34,95 @@
     <div class="container margin_60">
         <div class="checkout-page">
 
-            <ul class="default-links">
-                <li>Exisitng Customer? <a href="#">Click here to login</a>
-                </li>
-            </ul>
+<%--            <ul class="default-links">--%>
+<%--                <li>Exisitng Customer? <a href="#">Click here to login</a>--%>
+<%--                </li>--%>
+<%--            </ul>--%>
 
             <div class="row">
                 <div class="col-lg-7">
 
                     <div class="billing-details">
                         <div class="shop-form">
-                            <form method="post">
+                            <form action="login.booking" method="post">
+                                <input hidden value="${roomId}" name="roomId"/>
+                                <input hidden value="${numberOfNights}" name="numberOfNights"/>
+                                <input hidden value="${startDate}" name="startDate"/>
+                                <input hidden value="${endDate}" name="endDate"/>
+
+
                                 <div class="default-title">
-                                    <h2>Billing Details</h2>
+                                    <h2>Log in </h2>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label>First name <sup>*</sup>
+                                        <label>Email <sup>*</sup>
                                         </label>
-                                        <input type="text" name="field-name" value="" placeholder="" class="form-control">
+                                        <input type="text" name="email" value="" placeholder="" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label>Last name <sup>*</sup>
+                                        <label>Password <sup>*</sup>
                                         </label>
-                                        <input type="text" name="field-name" value="" placeholder="" class="form-control">
+                                        <input type="password" name="password" value="" placeholder="" class="form-control">
                                     </div>
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <label>Company name</label>
-                                        <input type="text" name="field-name" value="" placeholder="" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label>Email Address <sup>*</sup>
-                                        </label>
-                                        <input type="email" name="field-name" value="" placeholder="" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label>Phone <sup>*</sup>
-                                        </label>
-                                        <input type="text" name="field-name" value="" placeholder="" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <label>Address <sup>*</sup>
-                                        </label>
-                                        <input type="text" name="field-name" value="" placeholder="" class="form-control">
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12 text-center">
+                                        <input type="submit" class="btn_full" value="Sign in and Book the Room">
                                     </div>
 
-<%--                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">--%>
-<%--                                        <div class="check-box">--%>
-<%--                                            <input type="checkbox" name="shipping-option" id="account-option"> &ensp;--%>
-<%--                                            <label for="account-option">Create an account?</label>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
 
                                 </div>
                             </form>
                         </div>
                     </div>
                     <!--End Billing Details-->
+                    <div class="billing-details">
+                        <div class="shop-form">
+                            <form action="register.booking" method="post">
+                                <input hidden value="${roomId}" name="roomId"/>
+                                <input hidden value="${numberOfNights}" name="numberOfNights"/>
+                                <input hidden value="${startDate}" name="startDate"/>
+                                <input hidden value="${endDate}" name="endDate"/>
+                                <div class="default-title">
+                                    <h2>Or Create an Account</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <label>First Name <sup>*</sup>
+                                        </label>
+                                        <input type="text" name="firstname" value="" placeholder="" class="form-control" required >
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <label>Last Name <sup>*</sup>
+                                        </label>
+                                        <input type="text" name="lastname" value="" placeholder="" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <label>Phone Number<sup>*</sup></label>
+                                        <input type="text" name="phonenumber" value="" placeholder="" class="form-control" required pattern="0[0123456789]{9}$">
+                                    </div>
+                                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                        <label>Address <sup>*</sup>
+                                        </label>
+                                        <input type="text" name="address" value="" placeholder="" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <label>Email Address <sup>*</sup>
+                                        </label>
+                                        <input type="email" name="email" value="" placeholder="" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <label>Password <sup>*</sup>
+                                        </label>
+                                        <input type="password" name="password" value="" placeholder="" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-md-10 col-sm-6 col-xs-12 text-center">
+                                        <input type="submit" class="btn_full" value="Create an Account and Book the Room">
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <!--End Col-->
 
@@ -170,7 +206,7 @@
 <%--                                </li>--%>
 <%--                            </ul>--%>
 <%--                        </div>--%>
-                        <button type="button" class="btn_full">Place Order <i class="icon-left"></i>
+<%--                        <button type="button" class="btn_full">Place Order <i class="icon-left"></i>--%>
                         </button>
                     </div>
                     <!--End Place Order-->

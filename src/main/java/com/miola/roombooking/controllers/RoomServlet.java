@@ -1,7 +1,11 @@
 package com.miola.roombooking.controllers;
 
+import com.miola.roombooking.dao.BookingDao;
 import com.miola.roombooking.dao.RoomDao;
+import com.miola.roombooking.models.Booking;
+import com.miola.roombooking.models.Client;
 import com.miola.roombooking.models.Room;
+import com.miola.roombooking.utils.Functions;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -9,6 +13,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.util.LinkedList;
 
+@MultipartConfig
 @WebServlet(name = "RoomServlet", value = "*.room")
 public class RoomServlet extends HttpServlet {
     @Override
@@ -16,6 +21,7 @@ public class RoomServlet extends HttpServlet {
         response.setContentType("text/html");
         String Path = request.getServletPath();
         RoomDao roomDao = new RoomDao();
+        BookingDao bookingDao = new BookingDao();
         //========================== Admin's Actions ============================\\
         if (Path.equalsIgnoreCase("/list.room")) {
             // get rooms list
@@ -25,7 +31,7 @@ public class RoomServlet extends HttpServlet {
         else if (Path.equalsIgnoreCase("/add.room")) {
             request.getRequestDispatcher("admin/manage-rooms.jsp").forward(request, response);
 
-        }if (Path.equalsIgnoreCase("/save.room")) {
+        }else if (Path.equalsIgnoreCase("/save.room")) {
             // get infos and save action (add,edit,delete) to database
             request.getRequestDispatcher("admin/manage-rooms.jsp").forward(request, response);
         }
@@ -53,11 +59,42 @@ public class RoomServlet extends HttpServlet {
             request.setAttribute("rooms" , rooms);
             request.getRequestDispatcher("all-rooms-list.jsp").forward(request, response);
         }else if(Path.equalsIgnoreCase("/book.room")){
-            int roomId = Integer.parseInt(request.getParameter("id")) ;
-            int numberOfNights = Integer.parseInt(request.getParameter("numberofnights")) ;
+            int roomId = Integer.parseInt(request.getParameter("roomId")) ;
             String startDate = request.getParameter("start");
             String endDate = request.getParameter("end");
-            request.getRequestDispatcher("checkout.jsp").forward(request, response);
+            Client client = (Client) request.getSession().getAttribute("loggedIn");
+            Room room = roomDao.getRoomById(roomId);
+            String returnPage="checkout.jsp";
+            int numberOfNights = Functions.getNumberOfNights(startDate,endDate);
+
+            if(client != null){
+                if(numberOfNights == -1){
+                    request.setAttribute("error", "Room is unvailable at tha date!");
+                    returnPage = "404.jsp";
+                }else{
+                    Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
+                    boolean isBooked = bookingDao.addBooking(booking);
+                    if(isBooked){
+                        request.setAttribute("booking",booking);
+                        request.setAttribute("room", room);
+                        request.setAttribute("client", client);
+                        returnPage = "thanks.jsp";
+                    }else {
+                        request.setAttribute("error", "Room is unvailable at tha date!");
+                        returnPage = "404.jsp";
+                    }
+                }
+
+            }else{
+                request.setAttribute("roomId" ,roomId);
+                request.setAttribute("numberOfNights" ,numberOfNights);
+                request.setAttribute("startDate" ,startDate);
+                request.setAttribute("room", room);
+
+            }
+            request.getRequestDispatcher(returnPage).forward(request, response);
+//            response.sendRedirect(returnPage);
+            return;
         }
     }
 

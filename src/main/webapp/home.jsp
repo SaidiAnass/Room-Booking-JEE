@@ -84,7 +84,7 @@
                         <div class="ribbon_3 popular"><span>Popular</span></div>
                         <div class="img_container">
                             <a href="details.room?id=${room.getRoomId()}">
-                                <img src="assets/img/hotel_1.jpg" width="800" height="533" class="img-fluid" alt="image">
+                                <img src="${room.getImage()}" width="800" height="533" class="img-fluid" alt="image">
                                 <div class="score"><span>7.5</span>Good</div>
                                 <div class="short_info hotel">
                                     From/Per night<span class="price"><sup>$</sup>${room.getPrice()}</span>
@@ -97,9 +97,9 @@
                                 <i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star-empty"></i>
                             </div>
                             <!-- end rating -->
-                            <div class="wishlist">
-                                <a class="tooltip_flip tooltip-effect-1" href="#">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>
-                            </div>
+<%--                            <div class="wishlist">--%>
+<%--                                <a class="tooltip_flip tooltip-effect-1" href="#">+<span class="tooltip-content-flip"><span class="tooltip-back">Add to wishlist</span></span></a>--%>
+<%--                            </div> --%>
                             <!-- End wish list-->
                         </div>
                     </div>

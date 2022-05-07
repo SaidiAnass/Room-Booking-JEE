@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <label>Phone Number</label>
-            <input type="text" class="form-control" required name="phonenumber" value="<%= client.getPhoneNumber() %>"/>
+            <input type="text" class="form-control" required name="phonenumber" pattern="0[0123456789]{9}$" value="<%= client.getPhoneNumber() %>"/>
         </div>
         <div class="form-group">
             <label>Address</label>

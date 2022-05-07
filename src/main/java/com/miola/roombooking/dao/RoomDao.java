@@ -31,7 +31,7 @@ public class RoomDao {
             ResultSet rs = stmt.executeQuery("select * from room");
 
             while (rs.next()) {
-                Room room= new Room(rs.getInt("roomId") ,rs.getString("name"), rs.getString("description"), rs.getString("type"), rs.getFloat("price"),rs.getBoolean("isBooked"));
+                Room room= new Room(rs.getInt("roomId") ,rs.getString("name"), rs.getString("description"),rs.getString("image"), rs.getString("type"), rs.getFloat("price"),rs.getBoolean("isBooked"));
                 roomsList.add(room);
             }
 
@@ -51,7 +51,7 @@ public class RoomDao {
 
             while(rs.next()) {
                 System.out.println("Here");
-                return new Room(rs.getInt("roomId") ,rs.getString("name"), rs.getString("description"), rs.getString("type"), rs.getFloat("price"),rs.getBoolean("isBooked"));
+                return new Room(rs.getInt("roomId") ,rs.getString("name"), rs.getString("description"),rs.getString("image"), rs.getString("type"), rs.getFloat("price"),rs.getBoolean("isBooked"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -76,7 +76,7 @@
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="text" class="form-control" required name="phonenumber"/>
+                        <input type="text" class="form-control" required name="phonenumber" pattern="0[0123456789]{9}$"/>
                     </div>
                     <div class="form-group">
                         <label>Address</label>

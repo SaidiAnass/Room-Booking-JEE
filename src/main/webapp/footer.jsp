@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4">
                 <h3>Need help?</h3>
-                <a href="tel://0527620344" id="phone">+212527620344</a>
+                <a href="tel://0673620344" id="phone">+212673620344</a>
                 <a href="mailto:help@miolamotel.ma" id="email_footer">help@miolamotel.ma</a>
             </div>
             <div class="col-md-3">
@@ -80,32 +80,19 @@
     <div class="small-dialog-header">
         <h3>Sign In</h3>
     </div>
-    <form>
+    <form action="client-login.auth" method="post">
         <div class="sign-in-wrapper">
-            <a href="#0" class="social_bt facebook">Login with Facebook</a>
-            <a href="#0" class="social_bt google">Login with Google</a>
-            <div class="divider"><span>Or</span></div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" name="email" id="email">
+                <input type="email" class="form-control" name="email" id="email" required>
                 <i class="icon_mail_alt"></i>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" name="password" id="password" value="">
+                <input type="password" class="form-control" name="password" id="password" value="" required>
                 <i class="icon_lock_alt"></i>
             </div>
-            <div class="clearfix add_bottom_15">
-                <div class="checkboxes float-left">
-                    <input id="remember-me" type="checkbox" name="check">
-                    <label for="remember-me">Remember Me</label>
-                </div>
-                <div class="float-right"><a id="forgot" href="javascript:void(0);">Forgot Password?</a></div>
-            </div>
             <div class="text-center"><input type="submit" value="Log In" class="btn_login"></div>
-            <div class="text-center">
-                Don’t have an account? <a href="javascript:void(0);">Sign up</a>
-            </div>
             <div id="forgot_pw">
                 <div class="form-group">
                     <label>Please confirm login email below</label>

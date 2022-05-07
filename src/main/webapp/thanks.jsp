@@ -1,14 +1,25 @@
+<%@ page import="com.miola.roombooking.models.Room" %>
+<%@ page import="com.miola.roombooking.models.Booking" %>
+<%@ page import="com.miola.roombooking.models.Client" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <%@include file="./header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<% Room room = (Room) request.getAttribute("room"); %>
+<% Booking booking = (Booking) request.getAttribute("booking"); %>
+<%  Client client = (Client) request.getAttribute("client"); %>
 
+<c:if test="${ booking == null }">
+    <c:redirect url="/main"/>
+</c:if>
 
-<section class="parallax-window" data-parallax="scroll" data-image-src="img/header_bg.jpg" data-natural-width="1400" data-natural-height="470">
+<body>
+<section class="parallax-window" data-parallax="scroll" data-image-src="http://www.ansonika.com/citytours/img/slide_hero_2.jpg" data-natural-width="1400" data-natural-height="470">
     <div class="parallax-content-1">
         <div class="animated fadeInDown">
-            <h1>Shopping cart</h1>
-            <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
+            <h1>Thank you!</h1>
+            <p>See ya soon!</p>
         </div>
     </div>
 </section>
@@ -20,9 +31,9 @@
             <ul>
                 <li><a href="#">Home</a>
                 </li>
-                <li><a href="#">Category</a>
+                <li><a href="#">Thank-you</a>
                 </li>
-                <li>Page active</li>
+                <%--                <li>Page active</li>--%>
             </ul>
         </div>
     </div>
@@ -35,12 +46,12 @@
                 <div class="form_title">
                     <h3><strong><i class="icon-ok"></i></strong>Thank you!</h3>
                     <p>
-                        Mussum ipsum cacilds, vidis litro abertis.
+
                     </p>
                 </div>
                 <div class="step">
                     <p>
-                        Lorem ipsum dolor sit amet, nostrud nominati vis ex, essent conceptam eam ad. Cu etiam comprehensam nec. Cibo delicata mei an, eum porro legere no. Te usu decore omnium, quem brute vis at, ius esse officiis legendos cu. Dicunt voluptatum at cum. Vel et facete equidem deterruisset, mei graeco cetero labores et. Accusamus inciderint eu mea.
+                        Thank you for your reservation. We’re dedicated to giving you the best experience possible. If you have any questions, feel free to get in touch.
                     </p>
                 </div>
                 <!--End step -->
@@ -48,7 +59,7 @@
                 <div class="form_title">
                     <h3><strong><i class="icon-tag-1"></i></strong>Booking summary</h3>
                     <p>
-                        Mussum ipsum cacilds, vidis litro abertis.
+                        Details of your recent booking.
                     </p>
                 </div>
                 <div class="step">
@@ -59,7 +70,7 @@
                                 <strong>Name</strong>
                             </td>
                             <td>
-                                Jhon Doe
+                                <%=client.getFirstName()%> <%=client.getLastName()%>
                             </td>
                         </tr>
                         <tr>
@@ -67,50 +78,32 @@
                                 <strong>Check in</strong>
                             </td>
                             <td>
-                                10 April 2015</td>
+                                <%= booking.getStartDate()%></td>
                         </tr>
                         <tr>
                             <td><strong>Check out</strong>
                             </td>
                             <td>
-                                12 April 2015
+                                <%= booking.getEndDate()%>
                                 <br>
                             </td>
                         </tr>
                         <tr>
                             <td><strong>rooms</strong>
                             </td>
-                            <td>1 double room</td>
+                            <td><%= room.getRoomType()%> room</td>
                         </tr>
                         <tr>
                             <td><strong>Nights</strong>
                             </td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Adults</strong>
-                            </td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Childs</strong>
-                            </td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>Payment type</strong>
-                            </td>
-                            <td>
-                                Credit card
-                            </td>
+                            <td><%= booking.getNumberONights()%></td>
                         </tr>
                         <tr>
                             <td>
                                 <strong>TOTAL COST</strong>
                             </td>
                             <td>
-                                $154
+                               $ <%= (booking.getNumberONights()* room.getPrice())%>
                             </td>
                         </tr>
                         </tbody>
@@ -121,18 +114,18 @@
             <!--End col -->
 
             <aside class="col-lg-4">
-                <div class="box_style_1">
-                    <h3 class="inner">Thank you!</h3>
-                    <p>
-                        Nihil inimicus ex nam, in ipsum dignissim duo. Tale principes interpretaris vim ei, has posidonium definitiones ut. Duis harum fuisset ut his, duo an dolor epicuri appareat.
-                    </p>
-                    <hr>
-                    <a class="btn_full_outline" href="invoice.html" target="_blank">View your invoice</a>
-                </div>
+                <%--                <div class="box_style_1">--%>
+                <%--                    <h3 class="inner">Thank you!</h3>--%>
+                <%--                    <p>--%>
+                <%--                        Nihil inimicus ex nam, in ipsum dignissim duo. Tale principes interpretaris vim ei, has posidonium definitiones ut. Duis harum fuisset ut his, duo an dolor epicuri appareat.--%>
+                <%--                    </p>--%>
+                <%--                    <hr>--%>
+                <%--                    <a class="btn_full_outline" href="invoice.html" target="_blank">View your invoice</a>--%>
+                <%--                </div>--%>
                 <div class="box_style_4">
                     <i class="icon_set_1_icon-89"></i>
                     <h4>Have <span>questions?</span></h4>
-                    <a href="tel://004542344599" class="phone">+45 423 445 99</a>
+                    <a href="tel://004542344599" class="phone">+212673620344</a>
                     <small>Monday to Friday 9.00am - 7.30pm</small>
                 </div>
             </aside>
