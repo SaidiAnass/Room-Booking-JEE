@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4">
                 <h3>Need help?</h3>
-                <a href="tel://0527620344" id="phone">+212527620344</a>
+                <a href="tel://0673620344" id="phone">+212673620344</a>
                 <a href="mailto:help@miolamotel.ma" id="email_footer">help@miolamotel.ma</a>
             </div>
             <div class="col-md-3">
@@ -84,12 +84,12 @@
         <div class="sign-in-wrapper">
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" name="email" id="email">
+                <input type="email" class="form-control" name="email" id="email" required>
                 <i class="icon_mail_alt"></i>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" class="form-control" name="password" id="password" value="">
+                <input type="password" class="form-control" name="password" id="password" value="" required>
                 <i class="icon_lock_alt"></i>
             </div>
             <div class="text-center"><input type="submit" value="Log In" class="btn_login"></div>

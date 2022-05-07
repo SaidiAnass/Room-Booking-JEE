@@ -89,31 +89,31 @@
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                         <label>First Name <sup>*</sup>
                                         </label>
-                                        <input type="text" name="firstname" value="" placeholder="" class="form-control" >
+                                        <input type="text" name="firstname" value="" placeholder="" class="form-control" required >
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
                                         <label>Last Name <sup>*</sup>
                                         </label>
-                                        <input type="text" name="lastname" value="" placeholder="" class="form-control">
+                                        <input type="text" name="lastname" value="" placeholder="" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                         <label>Phone Number<sup>*</sup></label>
-                                        <input type="text" name="phonenumber" value="" placeholder="" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label>Email Address <sup>*</sup>
-                                        </label>
-                                        <input type="email" name="email" value="" placeholder="" class="form-control">
-                                    </div>
-                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                                        <label>Password <sup>*</sup>
-                                        </label>
-                                        <input type="password" name="password" value="" placeholder="" class="form-control">
+                                        <input type="text" name="phonenumber" value="" placeholder="" class="form-control" required pattern="0[0123456789]{9}$">
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                                         <label>Address <sup>*</sup>
                                         </label>
-                                        <input type="text" name="address" value="" placeholder="" class="form-control">
+                                        <input type="text" name="address" value="" placeholder="" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <label>Email Address <sup>*</sup>
+                                        </label>
+                                        <input type="email" name="email" value="" placeholder="" class="form-control" required>
+                                    </div>
+                                    <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                        <label>Password <sup>*</sup>
+                                        </label>
+                                        <input type="password" name="password" value="" placeholder="" class="form-control" required>
                                     </div>
                                     <div class="form-group col-md-10 col-sm-6 col-xs-12 text-center">
                                         <input type="submit" class="btn_full" value="Create an Account and Book the Room">
