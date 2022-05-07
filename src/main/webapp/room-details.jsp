@@ -64,7 +64,28 @@
                 <!-- Map button for tablets/mobiles -->
                 <div id="Img_carousel" class="slider-pro">
                     <div class="sp-slides">
+                        <div class="sp-slide">
+                            <img alt="Image" class="sp-image" src="${room.getImage()}" />
+                        </div>
                         <c:if test="${ (room.getRoomType().equals(\"lux\") )}">
+                            <div class="sp-slide">
+                                <img alt="Image" class="sp-image" src="https://i.pinimg.com/originals/d7/1f/79/d71f79e1e76221f35f5911488aeb8f0c.jpg" />
+                            </div>
+                            <div class="sp-slide">
+                                <img alt="Image" class="sp-image" src="https://media.cntraveler.com/photos/5f678a747557491753645012/master/w_4000,h_2666,c_limit/w-doha-qatar-suite.jpg" />
+                            </div>
+                        </c:if>
+
+                        <c:if test="${ (room.getRoomType().equals(\"single\") )}">
+                            <div class="sp-slide">
+                                <img alt="Image" class="sp-image" src="https://i.pinimg.com/originals/d7/1f/79/d71f79e1e76221f35f5911488aeb8f0c.jpg" />
+                            </div>
+                            <div class="sp-slide">
+                                <img alt="Image" class="sp-image" src="https://media.cntraveler.com/photos/5f678a747557491753645012/master/w_4000,h_2666,c_limit/w-doha-qatar-suite.jpg" />
+                            </div>
+                        </c:if>
+
+                        <c:if test="${ (room.getRoomType().equals(\"double\") )}">
                             <div class="sp-slide">
                                 <img alt="Image" class="sp-image" src="https://i.pinimg.com/originals/d7/1f/79/d71f79e1e76221f35f5911488aeb8f0c.jpg" />
                             </div>
@@ -75,7 +96,19 @@
 
                     </div>
                     <div class="sp-thumbnails">
+                        <img alt="Image" class="sp-thumbnail" src="${room.getImage()}">
+
                         <c:if test="${ (room.getRoomType().equals(\"lux\") )}">
+                            <img alt="Image" class="sp-thumbnail" src="https://i.pinimg.com/originals/d7/1f/79/d71f79e1e76221f35f5911488aeb8f0c.jpg">
+                            <img alt="Image" class="sp-thumbnail" src="https://media.cntraveler.com/photos/5f678a747557491753645012/master/w_4000,h_2666,c_limit/w-doha-qatar-suite.jpg">
+                        </c:if>
+
+                        <c:if test="${ (room.getRoomType().equals(\"single\") )}">
+                            <img alt="Image" class="sp-thumbnail" src="https://i.pinimg.com/originals/d7/1f/79/d71f79e1e76221f35f5911488aeb8f0c.jpg">
+                            <img alt="Image" class="sp-thumbnail" src="https://media.cntraveler.com/photos/5f678a747557491753645012/master/w_4000,h_2666,c_limit/w-doha-qatar-suite.jpg">
+                        </c:if>
+
+                        <c:if test="${ (room.getRoomType().equals(\"double\") )}">
                             <img alt="Image" class="sp-thumbnail" src="https://i.pinimg.com/originals/d7/1f/79/d71f79e1e76221f35f5911488aeb8f0c.jpg">
                             <img alt="Image" class="sp-thumbnail" src="https://media.cntraveler.com/photos/5f678a747557491753645012/master/w_4000,h_2666,c_limit/w-doha-qatar-suite.jpg">
                         </c:if>
