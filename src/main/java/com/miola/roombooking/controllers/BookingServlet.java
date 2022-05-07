@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+@MultipartConfig
 @WebServlet(name = "BookingServlet", value = "*.booking")
 public class BookingServlet extends HttpServlet {
     @Override
@@ -31,7 +32,7 @@ public class BookingServlet extends HttpServlet {
         else if (Path.equalsIgnoreCase("/add.booking")) {
             request.getRequestDispatcher("admin/bookings/add-booking.jsp").forward(request, response);
 
-        }if (Path.equalsIgnoreCase("/save.booking")) {
+        }else if (Path.equalsIgnoreCase("/save.booking")) {
             // get infos and save action (add,edit,delete) to database
             request.getRequestDispatcher("admin/bookings/bookings-list.jsp").forward(request, response);
         }
@@ -55,15 +56,24 @@ public class BookingServlet extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             Client client = clientDao.getClientByEmailAndPassword(email,password);
+
+            String returnPage="index.jsp";
             if (client != null) {
                 request.getSession().setAttribute("loggedIn" , client);
                 Room room = roomDao.getRoomById(roomId);
                 Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
                 bookingDao.addBooking(booking);
                 request.setAttribute("booking",booking);
-                request.getRequestDispatcher("thank-you.jsp").forward(request, response);
+                request.setAttribute("room", room);
+                request.setAttribute("client", client);
+                returnPage = "thanks.jsp";
             }
-            request.getRequestDispatcher("admin/bookings/bookings-list.jsp").forward(request, response);
+
+            request.getRequestDispatcher(returnPage).forward(request, response);
+//            response.sendRedirect(returnPage);
+            return;
+
+
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/register.booking")) {

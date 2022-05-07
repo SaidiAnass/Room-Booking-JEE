@@ -30,7 +30,7 @@ public class RoomServlet extends HttpServlet {
         else if (Path.equalsIgnoreCase("/add.room")) {
             request.getRequestDispatcher("admin/manage-rooms.jsp").forward(request, response);
 
-        }if (Path.equalsIgnoreCase("/save.room")) {
+        }else if (Path.equalsIgnoreCase("/save.room")) {
             // get infos and save action (add,edit,delete) to database
             request.getRequestDispatcher("admin/manage-rooms.jsp").forward(request, response);
         }
@@ -64,18 +64,26 @@ public class RoomServlet extends HttpServlet {
             String endDate = request.getParameter("end");
             Client client = (Client) request.getSession().getAttribute("loggedIn");
             Room room = roomDao.getRoomById(roomId);
+            String returnPage="checkout.jsp";
+
             if(client != null){
                 Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
                 bookingDao.addBooking(booking);
                 request.setAttribute("booking",booking);
-                request.getRequestDispatcher("thank-you.jsp").forward(request, response);
-            }
-            request.setAttribute("roomId" ,roomId);
-            request.setAttribute("numberOfNights" ,numberOfNights);
-            request.setAttribute("startDate" ,startDate);
-            request.setAttribute("endDate" ,endDate);
-            request.getRequestDispatcher("checkout.jsp").forward(request, response);
+                request.setAttribute("room", room);
+                request.setAttribute("client", client);
+                returnPage= "thanks.jsp";
+            }else{
+                request.setAttribute("roomId" ,roomId);
+                request.setAttribute("numberOfNights" ,numberOfNights);
+                request.setAttribute("startDate" ,startDate);
+                request.setAttribute("endDate" ,endDate);
+                request.setAttribute("room", room);
 
+            }
+            request.getRequestDispatcher(returnPage).forward(request, response);
+//            response.sendRedirect(returnPage);
+            return;
         }
     }
 
