@@ -96,7 +96,7 @@
                             <a href="checkout.jsp" class="show-submenu">Room Checkout</a>
                         </li>
                         <li class="submenu">
-                            <a href="thank-you.jsp" class="show-submenu">Thank you</a>
+                            <a href="thanks.jsp" class="show-submenu">Thank you</a>
                         </li>
                     </ul>
                 </div><!-- End main-menu -->

@@ -77,8 +77,41 @@ public class BookingServlet extends HttpServlet {
         }
         //=========================================================================\\
         else if (Path.equalsIgnoreCase("/register.booking")) {
-            // get bookings list
-            request.getRequestDispatcher("admin/bookings/bookings-list.jsp").forward(request, response);
+            int roomId = Integer.parseInt(request.getParameter("roomId")) ;
+            int numberOfNights = Integer.parseInt(request.getParameter("numberOfNights")) ;
+            String startDate = request.getParameter("startDate");
+            String endDate = request.getParameter("endDate");
+
+            Client client = new Client();
+            client.setFirstName(request.getParameter("firstname"));
+            client.setLastName(request.getParameter("lastname"));
+            client.setPhoneNumber(request.getParameter("phonenumber"));
+            client.setAddress(request.getParameter("address"));
+            client.setEmail(request.getParameter("email"));
+            client.setPassword(request.getParameter("password"));
+            clientDao.addClient(client);
+
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            client = clientDao.getClientByEmailAndPassword(email,password);
+
+
+
+            String returnPage="index.jsp";
+            if (client != null) {
+                request.getSession().setAttribute("loggedIn" , client);
+                Room room = roomDao.getRoomById(roomId);
+                Booking booking = new Booking(client.getClientId(), roomId,startDate,endDate,numberOfNights, room.getPrice()*numberOfNights);
+                bookingDao.addBooking(booking);
+                request.setAttribute("booking",booking);
+                request.setAttribute("room", room);
+                request.setAttribute("client", client);
+                returnPage = "thanks.jsp";
+            }
+
+            request.getRequestDispatcher(returnPage).forward(request, response);
+//            response.sendRedirect(returnPage);
+            return;
         }
     }
 

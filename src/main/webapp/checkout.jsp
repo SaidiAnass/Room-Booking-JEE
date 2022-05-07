@@ -77,7 +77,11 @@
                     <!--End Billing Details-->
                     <div class="billing-details">
                         <div class="shop-form">
-                            <form method="post">
+                            <form action="register.booking" method="post">
+                                <input hidden value="${roomId}" name="roomId"/>
+                                <input hidden value="${numberOfNights}" name="numberOfNights"/>
+                                <input hidden value="${startDate}" name="startDate"/>
+                                <input hidden value="${endDate}" name="endDate"/>
                                 <div class="default-title">
                                     <h2>Or Create an Account</h2>
                                 </div>
@@ -93,7 +97,7 @@
                                         <input type="text" name="lastname" value="" placeholder="" class="form-control">
                                     </div>
                                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                                        <label>Phone Number</label>
+                                        <label>Phone Number<sup>*</sup></label>
                                         <input type="text" name="phonenumber" value="" placeholder="" class="form-control">
                                     </div>
                                     <div class="form-group col-md-6 col-sm-6 col-xs-12">
