@@ -10,8 +10,8 @@
 <section class="parallax-window" data-parallax="scroll" data-image-src="img/header_bg.jpg" data-natural-width="1400" data-natural-height="470">
     <div class="parallax-content-1">
         <div class="animated fadeInDown">
-            <h1>Shopping cart</h1>
-            <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
+            <h1>Checkout</h1>
+            <p>Log in to your account and complete your booking now!</p>
         </div>
     </div>
 </section>
@@ -33,11 +33,6 @@
 
     <div class="container margin_60">
         <div class="checkout-page">
-
-<%--            <ul class="default-links">--%>
-<%--                <li>Exisitng Customer? <a href="#">Click here to login</a>--%>
-<%--                </li>--%>
-<%--            </ul>--%>
 
             <div class="row">
                 <div class="col-lg-7">
@@ -126,56 +121,46 @@
                 </div>
                 <!--End Col-->
 
-                <div class="col-lg-5">
-                    <div class="your-order">
-                        <div class="default-title">
-                            <h2>Your Order</h2>
-                        </div>
-                        <ul class="orders-table">
-                            <li class="table-header clearfix">
-                                <div class="col">
-                                    <strong>Product</strong>
-                                </div>
-                                <div class="col">
-                                    <strong>Total</strong>
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col" style="text-transform:none;">
-                                    <img src="assets/img/products/thumb-1.jpg" width="50" height="50" alt=""> World Travel Guide
-                                </div>
-                                <div class="col second">
-                                    $15.00
-                                </div>
-                            </li>
+<%--                <div class="col-lg-5">--%>
+<%--                    <div class="your-order">--%>
+<%--                        <div class="default-title">--%>
+<%--                            <h2>Your Order</h2>--%>
+<%--                        </div>--%>
+<%--                        <ul class="orders-table">--%>
+<%--                            <li class="table-header clearfix">--%>
+<%--                                <div class="col">--%>
+<%--                                    <strong>Product</strong>--%>
+<%--                                </div>--%>
+<%--                                <div class="col">--%>
+<%--                                    <strong>Total</strong>--%>
+<%--                                </div>--%>
+<%--                            </li>--%>
 <%--                            <li class="clearfix">--%>
 <%--                                <div class="col" style="text-transform:none;">--%>
-<%--                                    SubTotal--%>
+<%--                                    <img src="assets/img/products/thumb-1.jpg" width="50" height="50" alt=""> World Travel Guide--%>
 <%--                                </div>--%>
 <%--                                <div class="col second">--%>
 <%--                                    $15.00--%>
 <%--                                </div>--%>
 <%--                            </li>--%>
-                            <li class="clearfix total">
-                                <div class="col">
-                                    <strong>Order Total</strong>
-                                </div>
-                                <div class="col second">
-                                    <strong>$15.00</strong>
-                                </div>
-                            </li>
-                        </ul>
-<%--                        <div class="coupon-code">--%>
-<%--                            <div class="form-group">--%>
-<%--                                <div class="field-group">--%>
-<%--                                    <input type="text" name="code" value="" placeholder="Coupon Code" class="form-control">--%>
+<%--&lt;%&ndash;                            <li class="clearfix">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <div class="col" style="text-transform:none;">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    SubTotal&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                <div class="col second">&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                    $15.00&ndash;%&gt;--%>
+<%--&lt;%&ndash;                                </div>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                            <li class="clearfix total">--%>
+<%--                                <div class="col">--%>
+<%--                                    <strong>Order Total</strong>--%>
 <%--                                </div>--%>
-<%--                                <div class="field-group btn-field">--%>
-<%--                                    <button type="submit" class="btn_cart_outine">Apply</button>--%>
+<%--                                <div class="col second">--%>
+<%--                                    <strong>$15.00</strong>--%>
 <%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-                    </div>
+<%--                            </li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
                     <!--End Your Order-->
 
                     <div class="place-order">

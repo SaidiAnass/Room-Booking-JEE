@@ -90,49 +90,9 @@
                         <li class="submenu">
                             <a href="all-rooms-list.jsp" class="show-submenu">All Rooms</a>
                         </li>
-<%--                        <li class="submenu">--%>
-<%--                            <a href="room-details.jsp" class="show-submenu">Room Details</a>--%>
-<%--                        </li>--%>
-<%--                        <li class="submenu">--%>
-<%--                            <a href="checkout.jsp" class="show-submenu">Room Checkout</a>--%>
-<%--                        </li>--%>
-<%--                        <li class="submenu">--%>
-<%--                            <a href="thanks.jsp" class="show-submenu">Thank you</a>--%>
-<%--                        </li>--%>
                     </ul>
                 </div><!-- End main-menu -->
-<%--                <ul id="top_tools">--%>
-<%--                    <li>--%>
-<%--                        <a href="javascript:void(0);" class="search-overlay-menu-btn"><i class="icon_search"></i></a>--%>
-<%--                    </li>--%>
-<%--                    <li>--%>
-<%--                        <div class="dropdown dropdown-cart">--%>
-<%--                            <a href="#" data-toggle="dropdown" class="cart_bt"><i class="icon_bag_alt"></i><strong>3</strong></a>--%>
-<%--                            <ul class="dropdown-menu" id="cart_items">--%>
-<%--                                <li>--%>
-<%--                                    <div class="image"><img src="assets/img/thumb_cart_1.jpg" alt="image"></div>--%>
-<%--                                    <strong><a href="#">Louvre museum</a>1x $36.00 </strong>--%>
-<%--                                    <a href="#" class="action"><i class="icon-trash"></i></a>--%>
-<%--                                </li>--%>
-<%--                                <li>--%>
-<%--                                    <div class="image"><img src="assets/img/thumb_cart_2.jpg" alt="image"></div>--%>
-<%--                                    <strong><a href="#">Versailles tour</a>2x $36.00 </strong>--%>
-<%--                                    <a href="#" class="action"><i class="icon-trash"></i></a>--%>
-<%--                                </li>--%>
-<%--                                <li>--%>
-<%--                                    <div class="image"><img src="assets/img/thumb_cart_3.jpg" alt="image"></div>--%>
-<%--                                    <strong><a href="#">Versailles tour</a>1x $36.00 </strong>--%>
-<%--                                    <a href="#" class="action"><i class="icon-trash"></i></a>--%>
-<%--                                </li>--%>
-<%--                                <li>--%>
-<%--                                    <div>Total: <span>$120.00</span></div>--%>
-<%--                                    <a href="cart.html" class="button_drop">Go to cart</a>--%>
-<%--                                    <a href="payment.html" class="button_drop outline">Check out</a>--%>
-<%--                                </li>--%>
-<%--                            </ul>--%>
-<%--                        </div><!-- End dropdown-cart-->--%>
-<%--                    </li>--%>
-<%--                </ul>--%>
+
             </nav>
         </div>
     </div><!-- container -->
