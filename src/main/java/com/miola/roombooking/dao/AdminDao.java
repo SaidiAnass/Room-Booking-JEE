@@ -1,6 +1,7 @@
 package com.miola.roombooking.dao;
 
 import com.miola.roombooking.models.Admin;
+import com.miola.roombooking.models.Client;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -62,6 +63,25 @@ public class AdminDao {
     public Admin getAdminById(int id){
         String query = "SELECT * FROM admin WHERE adminId like '" + id +"'";
         Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                System.out.println("Here");
+                return new Admin(rs.getInt("adminId"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"), rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Admin not  found");
+        return null;
+    }
+
+    /* Email and Password => Admin */
+    public Admin getAdminByEmailAndPassword(String email , String password){
+        String query = "SELECT * FROM admin WHERE email like '" + email +"' AND password like '"+password+"'";
+        Statement stmt ;
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(query);
