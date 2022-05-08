@@ -28,15 +28,17 @@ public class BookingServlet extends HttpServlet {
         RoomDao roomDao = new RoomDao();
 
         //========================== Admin's Actions ============================\\
+        // get all bookings and list them
         if (Path.equalsIgnoreCase("/list.booking")) {
             // get bookings list
             request.getRequestDispatcher("admin/bookings/bookings-list.jsp").forward(request, response);
         }
-        //=========================================================================\\
+        // add booking to database
         else if (Path.equalsIgnoreCase("/add.booking")) {
             request.getRequestDispatcher("admin/bookings/add-booking.jsp").forward(request, response);
 
-        }else if (Path.equalsIgnoreCase("/save.booking")) {
+        }
+        else if (Path.equalsIgnoreCase("/save.booking")) {
             // get infos and save action (add,edit,delete) to database
             request.getRequestDispatcher("admin/bookings/bookings-list.jsp").forward(request, response);
         }

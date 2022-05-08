@@ -1,6 +1,8 @@
 package com.miola.roombooking.controllers;
 
+import com.miola.roombooking.dao.AdminDao;
 import com.miola.roombooking.dao.ClientDao;
+import com.miola.roombooking.models.Admin;
 import com.miola.roombooking.models.Client;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -8,14 +10,18 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+@MultipartConfig
 @WebServlet(name = "Login", value = "*.auth")
 public class Login extends HttpServlet {
+    // This servlet handles auth of both clients and admins
     ClientDao clientDao = new ClientDao();
+    AdminDao adminDao =new AdminDao();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         String Path = request.getServletPath();
         //========================== CLient's Actions ============================\\
+        // Client login
         if (Path.equalsIgnoreCase("/client-login.auth")) {
             // get infos and authenticate
             String email = request.getParameter("email");
@@ -23,17 +29,20 @@ public class Login extends HttpServlet {
 
             Client loggedIn = clientDao.getClientByEmailAndPassword(email,password);
             if(loggedIn != null ){
+                // store user in session
                 request.getSession().setAttribute("loggedIn" , loggedIn);
             }
-
-
             request.getRequestDispatcher("index.jsp").forward(request, response);
-            //=========================================================================\\
+
+            // Client logout
         }else if (Path.equalsIgnoreCase("/client-logout.auth")) {
+            // clear session & logout
             request.getSession().invalidate();
             request.getRequestDispatcher("index.jsp").forward(request, response);
-            //=========================================================================\\
+
+            // Client Register
         } else if (Path.equalsIgnoreCase("/client-register.auth")) {
+            // create client object
             Client client = new Client();
             client.setFirstName(request.getParameter("firstname"));
             client.setLastName(request.getParameter("lastname"));
@@ -43,32 +52,33 @@ public class Login extends HttpServlet {
             client.setPassword(request.getParameter("password"));
             clientDao.addClient(client);
 
+            // authenticate
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             client = clientDao.getClientByEmailAndPassword(email, password);
             if (client != null) {
+                // store client in session if succesful
                 request.getSession().setAttribute("loggedIn", client);
             }
-
-
             request.getRequestDispatcher("index.jsp").forward(request, response);
+
+            // Admin login
+        } else if (Path.equalsIgnoreCase("/admin-login.auth")) {
+            // get infos and authenticate
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            // auth
+            Admin loggedIn = adminDao.getAdminByEmailAndPassword(email,password);
+            request.getSession().setAttribute("adminAuth" , loggedIn);
+
+            request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+
+            // Admin logout
+        } else if (Path.equalsIgnoreCase("/admin-logout.auth")) {
+            request.getSession().invalidate();
+            request.getRequestDispatcher("admin/login.jsp").forward(request, response);
         }
-            //=========================================================================\\
-//        if (Path.equalsIgnoreCase("/admin-login.auth")) {
-//            // get infos and authenticate
-//            String email = request.getParameter("email");
-//            String password = request.getParameter("password");
-//
-//            Client loggedIn = clientDao.getClientByEmailAndPassword(email,password);
-//            request.getSession().setAttribute("loggedIn" , loggedIn);
-//
-//            request.getRequestDispatcher("index.jsp").forward(request, response);
-//            //=========================================================================\\
-//        }else if (Path.equalsIgnoreCase("/admin-logout.auth")) {
-//            request.getSession().invalidate();
-//            request.getRequestDispatcher("index.jsp").forward(request, response);
-//            //=========================================================================\\
-//        }
+        // No register for admin
     }
 
     @Override
