@@ -1,6 +1,5 @@
 package com.miola.roombooking.dao;
 
-import com.miola.roombooking.models.Admin;
 import com.miola.roombooking.models.Client;
 
 import java.sql.*;
@@ -21,6 +20,8 @@ public class ClientDao {
         }
     }
 
+
+    /* ID => Client */
     public Client getClientById(int id){
         String query = "SELECT * FROM client WHERE clientId like '" + id +"'";
         Statement stmt ;
@@ -39,6 +40,7 @@ public class ClientDao {
         return null;
     }
 
+    /* Email and Password => Client */
     public Client getClientByEmailAndPassword(String email , String password){
         String query = "SELECT * FROM client WHERE email like '" + email +"' AND password like '"+password+"'";
         Statement stmt ;
@@ -57,6 +59,7 @@ public class ClientDao {
         return null;
     }
 
+    /* Email => Client */
     public Client getClientByEmail(String email){
         String query = "SELECT * FROM client WHERE email like '" + email +"'";
         Statement stmt ;
@@ -75,6 +78,7 @@ public class ClientDao {
         return null;
     }
 
+    /* All Client */
     public LinkedList<Client> getAllCLients(){
         LinkedList<Client> clients= new LinkedList<>();
 
@@ -96,10 +100,7 @@ public class ClientDao {
         return clients;
     }
 
-    public Client getCLientByBookingId(int bookingId){
-        return  null;
-    }
-
+    /* Add Client */
     public boolean addClient(Client cli){
         if(getClientByEmail(cli.getEmail()) != null){
             System.out.println("CLient existe");
@@ -122,6 +123,7 @@ public class ClientDao {
         return rs > 0;
     }
 
+    /* Delete Client */
     public boolean deleteClient(Client c){
         String query = "DELETE FROM client WHERE clientId like '"+c.getClientId()+"'";
         Statement stmt = null;
@@ -136,6 +138,7 @@ public class ClientDao {
         return rs > 0;
     }
 
+    /* Update Client */
     public void updateClient(Client c){
         String query = "UPDATE client SET firstName = '"+c.getFirstName()+"', lastName = '"+c.getLastName()+"', phoneNumber = '"+c.getPhoneNumber()+"', address = '"+ c.getAddress()+"', email = '"+c.getEmail()+"', password = '"+c.getPassword()+"' WHERE clientId LIKE "+c.getClientId();
         System.out.println("Updatiing 2 ..");
