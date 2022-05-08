@@ -1,6 +1,5 @@
 package com.miola.roombooking.dao;
 
-import com.miola.roombooking.models.Admin;
 import com.miola.roombooking.models.Room;
 
 import java.sql.*;
@@ -74,4 +73,36 @@ public class RoomDao {
 
         return rs > 0;
     }
+
+    /* Add Room */
+    public boolean addRoom(Room room){
+
+        String query = "INSERT INTO room (name,description,image,type,price) VALUES" +
+                "('"+room.getName()+"','"+room.getDescription()+"','"+room.getImage()+"','"+room.getRoomType()+"','"+room.getPrice()+"')";
+        Statement stmt = null;
+        int rs=0;
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rs > 0;
+    }
+
+    /* Update Room */
+    public void updateRoom(Room room){
+        String query = "UPDATE room SET name = '"+room.getName()+"', description = '"+room.getDescription()+"', image = '"+room.getImage()+"', type = '"+room.getRoomType()+"', price = "+room.getPrice()+" WHERE roomId LIKE "+room.getRoomId();
+        System.out.println("Updatiing 2 ..");
+
+        try {
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(query);
+        } catch (SQLException e) {
+            System.out.println(e);
+            e.printStackTrace();
+        }
+    }
 }
+
