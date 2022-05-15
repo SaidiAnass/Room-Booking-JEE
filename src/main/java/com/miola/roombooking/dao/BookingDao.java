@@ -45,11 +45,11 @@ public class BookingDao {
     public LinkedList<Booking> getAllBookings(){
         LinkedList<Booking> bookings= new LinkedList<>();
 
-
         Statement stmt = null;
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from booking");
+
 
             while (rs.next()) {
                 Booking booking= new Booking(rs.getInt("bookingId"),rs.getInt("clientId"), rs.getInt("roomId"), rs.getString("startDate"),rs.getString("endDate"),rs.getInt("numberOfNights"),rs.getFloat("price")) ;
@@ -59,7 +59,27 @@ public class BookingDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("Got all bookings!");
         return bookings;
+    }
+
+    /* ID => Booking */
+    public Booking getBookingById(int id){
+        String query = "SELECT * FROM booking WHERE bookingId like '" + id +"'";
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                System.out.println("Here");
+                return new Booking(rs.getInt("bookingId"),rs.getInt("clientId"), rs.getInt("roomId"), rs.getString("startDate"),rs.getString("endDate"),rs.getInt("numberOfNights"),rs.getFloat("price")) ;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Booking not  found");
+        return null;
     }
 
     /* RoomID => All Bookings with this ID */
@@ -85,7 +105,7 @@ public class BookingDao {
     }
 
     /* ClientID => All Bookings with this ID */
-    public LinkedList<Booking> getBookingByCLientId(int id){
+    public LinkedList<Booking> getBookingsByCLientId(int id){
         LinkedList<Booking> bookings= new LinkedList<>();
 
 
@@ -127,8 +147,6 @@ public class BookingDao {
         if(!Functions.checkValidBooking(booking)){
             return false;
         }
-
-
 
         String query = "UPDATE booking SET clientId = '"+booking.getClientId()+"', roomId = '"+booking.getRoomId()+"', startDate = '"+booking.getStartDate()+"', endDate = '"+booking.getEndDate()+"', price = "+booking.getPrice()+", numberOfNights = "+booking.getNumberONights()+" WHERE bookingId LIKE "+booking.getBookingId();
         System.out.println("Updatiing 2 ..");
