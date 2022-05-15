@@ -11,7 +11,7 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
 @MultipartConfig
-@WebServlet(name = "Login", value = "*.auth")
+@WebServlet(name = "Login", urlPatterns = "*.auth")
 public class Login extends HttpServlet {
     // This servlet handles auth of both clients and admins
     ClientDao clientDao = new ClientDao();
@@ -34,13 +34,13 @@ public class Login extends HttpServlet {
             }
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
-            // Client logout
+        // Client logout
         }else if (Path.equalsIgnoreCase("/client-logout.auth")) {
             // clear session & logout
             request.getSession().invalidate();
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
-            // Client Register
+        // Client Register
         } else if (Path.equalsIgnoreCase("/client-register.auth")) {
             // create client object
             Client client = new Client();
@@ -62,18 +62,27 @@ public class Login extends HttpServlet {
             }
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
-            // Admin login
+        // Admin login
         } else if (Path.equalsIgnoreCase("/admin-login.auth")) {
             // get infos and authenticate
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             // auth
             Admin loggedIn = adminDao.getAdminByEmailAndPassword(email,password);
-            request.getSession().setAttribute("adminAuth" , loggedIn);
+            String returnPage = ("admin/index.jsp");
+            if(request.getSession().getAttribute("adminAuth") != null){
+                returnPage = ("admin/index.jsp");
+            }
+            else if(loggedIn != null){
+                request.getSession().setAttribute("adminAuth" , loggedIn);
+            }else {
+                returnPage=("admin/login.jsp");
+            }
 
-            request.getRequestDispatcher("admin/index.jsp").forward(request, response);
 
-            // Admin logout
+            request.getRequestDispatcher(returnPage).forward(request, response);
+
+        // Admin logout
         } else if (Path.equalsIgnoreCase("/admin-logout.auth")) {
             request.getSession().invalidate();
             request.getRequestDispatcher("admin/login.jsp").forward(request, response);

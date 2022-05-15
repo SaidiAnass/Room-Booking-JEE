@@ -12,12 +12,10 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.LinkedList;
 
 @MultipartConfig
-@WebServlet(name = "BookingServlet", value = "*.booking")
+@WebServlet(name = "BookingServlet", urlPatterns = "*.booking")
 public class BookingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,30 +28,65 @@ public class BookingServlet extends HttpServlet {
         //========================== Admin's Actions ============================\\
         // get all bookings and list them
         if (Path.equalsIgnoreCase("/list.booking")) {
-            // get bookings list
-            request.getRequestDispatcher("admin/bookings/bookings-list.jsp").forward(request, response);
+            LinkedList<Booking> bookingsList = bookingDao.getAllBookings();
+            request.setAttribute("bookingsList" , bookingsList);
+            request.getRequestDispatcher("admin/manage-bookings.jsp").forward(request, response);
         }
         // add booking to database
         else if (Path.equalsIgnoreCase("/add.booking")) {
-            request.getRequestDispatcher("admin/bookings/add-booking.jsp").forward(request, response);
+            Booking booking = new Booking();
+            booking.setClientId(Integer.parseInt(request.getParameter("clientId")));
+            booking.setRoomId(Integer.parseInt(request.getParameter("roomId")));
+            booking.setStartDate(request.getParameter("startDate"));
+            booking.setEndDate(request.getParameter("endDate"));
+            booking.setNumberONights(Functions.getNumberOfNights(booking.getStartDate(), booking.getEndDate()));
+            if(roomDao.getRoomById(booking.getRoomId()) !=null){
+                booking.setPrice(roomDao.getRoomById(booking.getRoomId()).getPrice() * booking.getNumberONights());
+            }
+
+
+            bookingDao.addBooking(booking);
+
+            request.getRequestDispatcher("list.booking").forward(request, response);
 
         }
-        else if (Path.equalsIgnoreCase("/save.booking")) {
-            // get infos and save action (add,edit,delete) to database
-            request.getRequestDispatcher("admin/bookings/bookings-list.jsp").forward(request, response);
-        }
-        //=========================================================================\\
+        //
         else if (Path.equalsIgnoreCase("/edit.booking")) {
-            // Long userID = Long.valueOf(request.getParameter("id"));
-            // get id and go to edit booking
-            request.getRequestDispatcher("admin/bookings/edit-booking.jsp").forward(request, response);
+            int id = Integer.parseInt(request.getParameter("id"));
+            System.out.println("Id to edit: "+ id);
+
+            Booking bookingToEdit = bookingDao.getBookingById(id);
+            request.setAttribute("bookingToEdit" , bookingToEdit);
+
+            request.getRequestDispatcher("admin/edit-booking.jsp").forward(request, response);
         }
-        //=========================================================================\\
+        else if (Path.equalsIgnoreCase("/save.booking")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            Booking booking = new Booking();
+            booking.setClientId(Integer.parseInt(request.getParameter("clientId")));
+            booking.setRoomId(Integer.parseInt(request.getParameter("roomId")));
+            booking.setStartDate(request.getParameter("startDate"));
+            booking.setEndDate(request.getParameter("endDate"));
+            booking.setNumberONights(Functions.getNumberOfNights(booking.getStartDate(), booking.getEndDate()));
+            if(roomDao.getRoomById(booking.getRoomId()) !=null){
+                booking.setPrice(roomDao.getRoomById(booking.getRoomId()).getPrice() * booking.getNumberONights());
+            }
+            booking.setBookingId(id);
+
+            bookingDao.updateBooking(booking);
+
+            request.getRequestDispatcher("list.booking").forward(request, response);
+        }
+        // delete booking by id
         else if (Path.equalsIgnoreCase("/delete.booking")) {
-            // get id and go to delete booking
-            request.getRequestDispatcher("admin/bookings/delete-booking.jsp").forward(request, response);
+            int id = Integer.parseInt(request.getParameter("id")) ;
+            bookingDao.deleteBooking(bookingDao.getBookingById(id));
+            request.getRequestDispatcher("list.booking").forward(request, response);
         }
-        //========================== Admin's Actions ============================\\
+
+        //========================== Client's Actions ============================\\
+        // the following is called when the user try to book a room, but he is not authenticated
+        // login before booking
         else if (Path.equalsIgnoreCase("/login.booking")) {
             int roomId = Integer.parseInt(request.getParameter("roomId")) ;
             String startDate = request.getParameter("startDate");
@@ -84,21 +117,19 @@ public class BookingServlet extends HttpServlet {
                         returnPage = "404.jsp";
                     }
                 }
-
-
             }
 
             request.getRequestDispatcher(returnPage).forward(request, response);
-            return;
 
 
         }
-        //=========================================================================\\
+        // register before booking
         else if (Path.equalsIgnoreCase("/register.booking")) {
             int roomId = Integer.parseInt(request.getParameter("roomId")) ;
             String startDate = request.getParameter("startDate");
             String endDate = request.getParameter("endDate");
 
+            // add user to db
             Client client = new Client();
             client.setFirstName(request.getParameter("firstname"));
             client.setLastName(request.getParameter("lastname"));
@@ -108,12 +139,12 @@ public class BookingServlet extends HttpServlet {
             client.setPassword(request.getParameter("password"));
             clientDao.addClient(client);
 
+            // try to log in with the same user
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             client = clientDao.getClientByEmailAndPassword(email,password);
 
-
-
+            // default retrun page
             String returnPage="index.jsp";
             if (client != null) {
                 request.getSession().setAttribute("loggedIn" , client);
@@ -140,7 +171,6 @@ public class BookingServlet extends HttpServlet {
             }
 
             request.getRequestDispatcher(returnPage).forward(request, response);
-            return;
         }
     }
 

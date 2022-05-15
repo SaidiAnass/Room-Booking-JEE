@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="rating"><i class="icon-star voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star  voted"></i><i class="icon-star-empty"></i>
                                     </div>
-                                    <h3><strong>${room.getName()}</strong> Hotel</h3>
+                                    <h3><strong>${room.getName()}</strong></h3>
                                     <p>${room.getDescription()}</p>
                                     <ul class="add_info">
                                         <li>

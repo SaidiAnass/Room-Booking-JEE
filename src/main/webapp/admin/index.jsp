@@ -1,3 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.miola.roombooking.models.Admin" %>
+<% Admin admin = (Admin) request.getSession().getAttribute("adminAuth"); %>
+<c:if test="${ adminAuth == null }">
+    <c:redirect url="./login.jsp"/>
+</c:if>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Ansonika">
-    <title>Admin dashboard</title>
+    <title>Admin Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -144,16 +151,21 @@
         </a>
     </div>
     <div class="card-block text-center radio">
-        <div class="image-icon">
-            <img class="icon icon1 fit-image" src="https://cdn-icons-png.flaticon.com/512/100/100445.png">
-        </div>
-        <p class="sub-desc">Manage Rooms</p>
+
+        <a href="../list.room">
+            <div class="image-icon">
+                <img class="icon icon1 fit-image" src="https://cdn-icons-png.flaticon.com/512/100/100445.png">
+            </div>
+            <p class="sub-desc">Manage Rooms</p>
+        </a>
     </div>
     <div class="card-block text-center radio">
-        <div class="image-icon">
-            <img class="icon icon1 fit-image" src="https://icon-library.com/images/reservation-icon-png/reservation-icon-png-29.jpg">
-        </div>
-        <p class="sub-desc">Manage Bookings</p>
+        <a href="../list.booking">
+            <div class="image-icon">
+                <img class="icon icon1 fit-image" src="https://icon-library.com/images/reservation-icon-png/reservation-icon-png-29.jpg">
+            </div>
+            <p class="sub-desc">Manage Bookings</p>
+        </a>
     </div>
 </div>
 

@@ -93,7 +93,7 @@ public class RoomDao {
 
     /* Update Room */
     public void updateRoom(Room room){
-        String query = "UPDATE room SET name = '"+room.getName()+"', description = '"+room.getDescription()+"', image = '"+room.getImage()+"', type = '"+room.getRoomType()+"', price = "+room.getPrice()+" WHERE roomId LIKE "+room.getRoomId();
+        String query = "UPDATE room SET name = '"+room.getName()+"', description = '"+room.getDescription()+"', image = '"+room.getImage()+"', type = '"+room.getRoomType()+"', price ='"+room.getPrice()+"' WHERE roomId LIKE "+room.getRoomId();
         System.out.println("Updatiing 2 ..");
 
         try {

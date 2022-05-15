@@ -1,6 +1,7 @@
 package com.miola.roombooking.dao;
 
 import com.miola.roombooking.models.Booking;
+import com.miola.roombooking.utils.Functions;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -22,31 +23,8 @@ public class BookingDao {
     /* Add Booking */
     public boolean addBooking(Booking booking){
         /* See if the room is Availabale */
-        // get all the bookings for this room
-        LinkedList<Booking> bookings = getBookingsByRoomId(booking.getRoomId());
-        int newBookingStartMonth= Integer.parseInt(booking.getStartDate().split("/")[0]);
-        int newBookingStartDay= Integer.parseInt(booking.getStartDate().split("/")[1]);
-        int newBookingEndMonth= Integer.parseInt(booking.getEndDate().split("/")[0]);
-        int newBookingEndDay= Integer.parseInt(booking.getEndDate().split("/")[1]);
-
-        for(Booking bk: bookings){
-            int startMonth= Integer.parseInt(bk.getStartDate().split("/")[0]);
-            int startDay= Integer.parseInt(bk.getStartDate().split("/")[1]);
-            int endMonth= Integer.parseInt(bk.getEndDate().split("/")[0]);
-            int endDay= Integer.parseInt(bk.getEndDate().split("/")[1]);
-            if(newBookingStartMonth == startMonth){
-                if(startDay < newBookingStartDay){
-                    if(endMonth == newBookingEndMonth){
-                        if(endDay > newBookingStartDay){
-                            return false;
-                        }
-                    }
-
-                }
-            }
-            if(newBookingStartMonth == endMonth){
-                if (newBookingStartDay<endDay) return false;
-            }
+        if(!Functions.checkValidBooking(booking)){
+            return false;
         }
 
         String query = "INSERT INTO booking (clientId,roomId,endDate,numberOfNights,startDate,price) VALUES" +
@@ -67,11 +45,11 @@ public class BookingDao {
     public LinkedList<Booking> getAllBookings(){
         LinkedList<Booking> bookings= new LinkedList<>();
 
-
         Statement stmt = null;
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from booking");
+
 
             while (rs.next()) {
                 Booking booking= new Booking(rs.getInt("bookingId"),rs.getInt("clientId"), rs.getInt("roomId"), rs.getString("startDate"),rs.getString("endDate"),rs.getInt("numberOfNights"),rs.getFloat("price")) ;
@@ -81,7 +59,27 @@ public class BookingDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("Got all bookings!");
         return bookings;
+    }
+
+    /* ID => Booking */
+    public Booking getBookingById(int id){
+        String query = "SELECT * FROM booking WHERE bookingId like '" + id +"'";
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while(rs.next()) {
+                System.out.println("Here");
+                return new Booking(rs.getInt("bookingId"),rs.getInt("clientId"), rs.getInt("roomId"), rs.getString("startDate"),rs.getString("endDate"),rs.getInt("numberOfNights"),rs.getFloat("price")) ;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Booking not  found");
+        return null;
     }
 
     /* RoomID => All Bookings with this ID */
@@ -107,7 +105,7 @@ public class BookingDao {
     }
 
     /* ClientID => All Bookings with this ID */
-    public LinkedList<Booking> getBookingByCLientId(int id){
+    public LinkedList<Booking> getBookingsByCLientId(int id){
         LinkedList<Booking> bookings= new LinkedList<>();
 
 
@@ -146,34 +144,9 @@ public class BookingDao {
     /* Update Booking */
     public boolean updateBooking(Booking booking){
         /* See if the room is Availabale */
-        // get all the bookings for this room
-        LinkedList<Booking> bookings = getBookingsByRoomId(booking.getRoomId());
-        int newBookingStartMonth= Integer.parseInt(booking.getStartDate().split("/")[0]);
-        int newBookingStartDay= Integer.parseInt(booking.getStartDate().split("/")[1]);
-        int newBookingEndMonth= Integer.parseInt(booking.getEndDate().split("/")[0]);
-        int newBookingEndDay= Integer.parseInt(booking.getEndDate().split("/")[1]);
-
-        for(Booking bk: bookings){
-            int startMonth= Integer.parseInt(bk.getStartDate().split("/")[0]);
-            int startDay= Integer.parseInt(bk.getStartDate().split("/")[1]);
-            int endMonth= Integer.parseInt(bk.getEndDate().split("/")[0]);
-            int endDay= Integer.parseInt(bk.getEndDate().split("/")[1]);
-            if(newBookingStartMonth == startMonth){
-                if(startDay < newBookingStartDay){
-                    if(endMonth == newBookingEndMonth){
-                        if(endDay > newBookingStartDay){
-                            return false;
-                        }
-                    }
-
-                }
-            }
-            if(newBookingStartMonth == endMonth){
-                if (newBookingStartDay<endDay) return false;
-            }
+        if(!Functions.checkValidBooking(booking)){
+            return false;
         }
-
-
 
         String query = "UPDATE booking SET clientId = '"+booking.getClientId()+"', roomId = '"+booking.getRoomId()+"', startDate = '"+booking.getStartDate()+"', endDate = '"+booking.getEndDate()+"', price = "+booking.getPrice()+", numberOfNights = "+booking.getNumberONights()+" WHERE bookingId LIKE "+booking.getBookingId();
         System.out.println("Updatiing 2 ..");
