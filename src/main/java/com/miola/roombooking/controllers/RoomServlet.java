@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 @MultipartConfig
-@WebServlet(name = "RoomServlet", value = "*.room")
+@WebServlet(name = "RoomServlet", urlPatterns = "*.room")
 public class RoomServlet extends HttpServlet {
     // this servlet handle the crud operations on rooms from the admin's end
     // for the clients it handles booking and seeing room details ..
@@ -43,7 +43,7 @@ public class RoomServlet extends HttpServlet {
 
             roomDao.addRoom(room);
 
-            request.getRequestDispatcher("admin/list.room").forward(request, response);
+            request.getRequestDispatcher("list.room").forward(request, response);
 
         }
         // get id and go to edit page
@@ -69,14 +69,14 @@ public class RoomServlet extends HttpServlet {
 
             roomDao.updateRoom(room);
 
-            request.getRequestDispatcher("admin/list.room").forward(request, response);
+            request.getRequestDispatcher("list.room").forward(request, response);
         }
         // delete room by id
         else if (Path.equalsIgnoreCase("/delete.room")) {
             // get id and go to delete room
             int roomId = Integer.parseInt(request.getParameter("id")) ;
             roomDao.deleteRoom(roomDao.getRoomById(roomId));
-            request.getRequestDispatcher("admin/list.room").forward(request, response);
+            request.getRequestDispatcher("list.room").forward(request, response);
 
 
         //========================== Client's Actions ============================\\

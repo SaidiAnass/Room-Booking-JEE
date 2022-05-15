@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Ansonika">
-    <title>Admin dashboard</title>
+    <title>Admin Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -153,10 +153,12 @@
         </a>
     </div>
     <div class="card-block text-center radio">
-        <div class="image-icon">
-            <img class="icon icon1 fit-image" src="https://icon-library.com/images/reservation-icon-png/reservation-icon-png-29.jpg">
-        </div>
-        <p class="sub-desc">Manage Bookings</p>
+        <a href="../list.booking">
+            <div class="image-icon">
+                <img class="icon icon1 fit-image" src="https://icon-library.com/images/reservation-icon-png/reservation-icon-png-29.jpg">
+            </div>
+            <p class="sub-desc">Manage Bookings</p>
+        </a>
     </div>
 </div>
 
