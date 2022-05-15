@@ -92,7 +92,7 @@
                             </a>
                         </div>
                         <div class="hotel_title">
-                            <h3><strong>${room.getName()}</strong> Hotel</h3>
+                            <h3><strong>${room.getName()}</strong></h3>
                             <div class="rating">
                                 <i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star voted"></i><i class="icon-star-empty"></i>
                             </div>
