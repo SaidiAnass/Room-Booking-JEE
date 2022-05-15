@@ -39,11 +39,11 @@ public class RoomServlet extends HttpServlet {
             room.setDescription(request.getParameter("description"));
             room.setRoomType(request.getParameter("type"));
             room.setImage(request.getParameter("image"));
-            room.setPrice(Integer.parseInt(request.getParameter("price")));
+            room.setPrice(Float.parseFloat(request.getParameter("price")));
 
             roomDao.addRoom(room);
 
-            request.getRequestDispatcher("admin/manage-rooms.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/list.room").forward(request, response);
 
         }
         // get id and go to edit page
@@ -64,19 +64,19 @@ public class RoomServlet extends HttpServlet {
             room.setDescription(request.getParameter("description"));
             room.setRoomType(request.getParameter("type"));
             room.setImage(request.getParameter("image"));
-            room.setPrice(Integer.parseInt(request.getParameter("price")));
+            room.setPrice(Float.parseFloat(request.getParameter("price")));
             room.setRoomId(id);
 
             roomDao.updateRoom(room);
 
-            request.getRequestDispatcher("admin/manage-rooms.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/list.room").forward(request, response);
         }
         // delete room by id
         else if (Path.equalsIgnoreCase("/delete.room")) {
             // get id and go to delete room
             int roomId = Integer.parseInt(request.getParameter("id")) ;
             roomDao.deleteRoom(roomDao.getRoomById(roomId));
-            request.getRequestDispatcher("admin/manage-rooms.jsp").forward(request, response);
+            request.getRequestDispatcher("admin/list.room").forward(request, response);
 
 
         //========================== Client's Actions ============================\\
