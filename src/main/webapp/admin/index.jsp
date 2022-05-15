@@ -144,10 +144,13 @@
         </a>
     </div>
     <div class="card-block text-center radio">
-        <div class="image-icon">
-            <img class="icon icon1 fit-image" src="https://cdn-icons-png.flaticon.com/512/100/100445.png">
-        </div>
-        <p class="sub-desc">Manage Rooms</p>
+
+        <a href="../list.room">
+            <div class="image-icon">
+                <img class="icon icon1 fit-image" src="https://cdn-icons-png.flaticon.com/512/100/100445.png">
+            </div>
+            <p class="sub-desc">Manage Rooms</p>
+        </a>
     </div>
     <div class="card-block text-center radio">
         <div class="image-icon">
