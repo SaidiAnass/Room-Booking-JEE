@@ -24,6 +24,8 @@
     <!-- SPECIFIC CSS -->
     <link href="assets/css/shop.css" rel="stylesheet">
 
+    <!-- SPECIFIC CSS -->
+    <link href="assets/css/admin.css" rel="stylesheet">
     <!-- CUSTOM CSS -->
     <link href="assets/css/custom.css" rel="stylesheet">
 
