@@ -2,9 +2,11 @@ package com.miola.roombooking.controllers;
 
 import com.miola.roombooking.dao.AdminDao;
 import com.miola.roombooking.dao.BookingDao;
+import com.miola.roombooking.dao.RoomDao;
 import com.miola.roombooking.models.Admin;
 import com.miola.roombooking.models.Booking;
 import com.miola.roombooking.models.Client;
+import com.miola.roombooking.models.Room;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -26,6 +28,7 @@ public class ProfileServlet extends HttpServlet{
         response.setContentType("text/html");
         String Path = request.getServletPath();
         BookingDao bookingDao = new BookingDao();
+        RoomDao roomDao= new RoomDao();
 
         // set default return page
         String returnPath = "profile.jsp";
@@ -43,8 +46,14 @@ public class ProfileServlet extends HttpServlet{
             else{
                 // get all bookings
                 LinkedList<Booking> bookings = bookingDao.getBookingsByCLientId(client.getClientId());
+
+                // get all rooms
+                LinkedList<Room> rooms = roomDao.getAllRooms();
+
+
                 boolean bookingsExist = bookings != null;
                 request.setAttribute("bookings" , bookings);
+                request.setAttribute("rooms" , rooms);
                 request.setAttribute("bookingsExist" , bookingsExist);
 
             }

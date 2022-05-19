@@ -45,142 +45,67 @@
             <div class="content">
 
                 <section id="section-1">
-                    <div id="tools">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-3 col-6">
-                                <div class="styled-select-filters">
-                                    <select name="sort_type" id="sort_type">
-                                        <option value="" selected>Sort by type</option>
-                                        <option value="tours">Tours</option>
-                                        <option value="hotels">Hotels</option>
-                                        <option value="transfers">Transfers</option>
-                                    </select>
+<%--                    <div id="tools">--%>
+<%--                        <div class="row">--%>
+<%--                            <div class="col-lg-2 col-md-3 col-6">--%>
+<%--                                <div class="styled-select-filters">--%>
+<%--                                    <select name="sort_type" id="sort_type">--%>
+<%--                                        <option value="" selected>Sort by type</option>--%>
+<%--                                        <option value="tours">Tours</option>--%>
+<%--                                        <option value="hotels">Hotels</option>--%>
+<%--                                        <option value="transfers">Transfers</option>--%>
+<%--                                    </select>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                            <div class="col-lg-2 col-md-3 col-6">--%>
+<%--                                <div class="styled-select-filters">--%>
+<%--                                    <select name="sort_date" id="sort_date">--%>
+<%--                                        <option value="" selected>Sort by date</option>--%>
+<%--                                        <option value="oldest">Oldest</option>--%>
+<%--                                        <option value="recent">Recent</option>--%>
+<%--                                    </select>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <!--/tools -->--%>
+                <c:if test = "${bookingsExist}">
+                    <c:forEach items="${bookings}" var="booking">
+                        <div class="strip_booking">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="date">
+                                        <span class="month">${booking.getStartDate()}</span>
+                                        <span class="day"><strong>${booking.getStartDate().split("/")[1]}</strong>${booking.getStartDate().split("/")[0]}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-2 col-md-3 col-6">
-                                <div class="styled-select-filters">
-                                    <select name="sort_date" id="sort_date">
-                                        <option value="" selected>Sort by date</option>
-                                        <option value="oldest">Oldest</option>
-                                        <option value="recent">Recent</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/tools -->
+                                <div class="col-lg-6 col-md-5">
+                                    <c:forEach items="${rooms}" var="room">
+                                        <c:if test = "${room.getRoomId() == booking.getRoomId()}">
+                                            <h3 class="hotel_booking">${room.getName()}<span>For ${booking.getNumberONights()} night(s).</span></h3>
+                                        </c:if>
 
-                    <div class="strip_booking">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2">
-                                <div class="date">
-                                    <span class="month">Dec</span>
-                                    <span class="day"><strong>23</strong>Sat</span>
+                                    </c:forEach>
+                                </div>
+                                <div class="col-lg-2 col-md-3">
+                                    <ul class="info_booking">
+                                        <li><strong>Booking id</strong>${booking.getBookingId()}</li>
+                                        <li><strong>Booked on</strong> ${booking.getStartDate()}</li>
+                                        <li><strong>To</strong> ${booking.getEndDate()}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="booking_buttons">
+                                        <a href="#0" class="btn_2">Edit</a>
+                                        <a href="#0" class="btn_3">Cancel</a>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-5">
-                                <h3 class="hotel_booking">Hotel Mariott Paris<span>2 Adults / 2 Nights</span></h3>
-                            </div>
-                            <div class="col-lg-2 col-md-3">
-                                <ul class="info_booking">
-                                    <li><strong>Booking id</strong> 23442</li>
-                                    <li><strong>Booked on</strong> Sat. 23 Dec. 2015</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="booking_buttons">
-                                    <a href="#0" class="btn_2">Edit</a>
-                                    <a href="#0" class="btn_3">Cancel</a>
-                                </div>
-                            </div>
+                            <!-- End row -->
                         </div>
-                        <!-- End row -->
-                    </div>
-                    <!-- End strip booking -->
-
-                    <div class="strip_booking">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2">
-                                <div class="date">
-                                    <span class="month">Dec</span>
-                                    <span class="day"><strong>27</strong>Fri</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-5">
-                                <h3 class="tours_booking">Louvre Museum<span>2 Adults / 2 Childs</span></h3>
-                            </div>
-                            <div class="col-lg-2 col-md-3">
-                                <ul class="info_booking">
-                                    <li><strong>Booking id</strong> 23442</li>
-                                    <li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="booking_buttons">
-                                    <a href="#0" class="btn_2">Edit</a>
-                                    <a href="#0" class="btn_3">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End row -->
-                    </div>
-                    <!-- End strip booking -->
-
-                    <div class="strip_booking">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2">
-                                <div class="date">
-                                    <span class="month">Dec</span>
-                                    <span class="day"><strong>28</strong>Fri</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-5">
-                                <h3 class="tours_booking">Tour Eiffel<span>2 Adults</span></h3>
-                            </div>
-                            <div class="col-lg-2 col-md-3">
-                                <ul class="info_booking">
-                                    <li><strong>Booking id</strong> 23442</li>
-                                    <li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="booking_buttons">
-                                    <a href="#0" class="btn_2">Edit</a>
-                                    <a href="#0" class="btn_3">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End row -->
-                    </div>
-                    <!-- End strip booking -->
-
-                    <div class="strip_booking">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2">
-                                <div class="date">
-                                    <span class="month">Dec</span>
-                                    <span class="day"><strong>30</strong>Fri</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-5">
-                                <h3 class="transfers_booking">Orly Airport<span>2 Adults / 2Childs</span></h3>
-                            </div>
-                            <div class="col-lg-2 col-md-3">
-                                <ul class="info_booking">
-                                    <li><strong>Booking id</strong> 23442</li>
-                                    <li><strong>Booked on</strong> Sat. 20 Dec. 2015</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="booking_buttons">
-                                    <a href="#0" class="btn_2">Edit</a>
-                                    <a href="#0" class="btn_3">Cancel</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End row -->
-                    </div>
-                    <!-- End strip booking -->
+                        <!-- End strip booking -->
+                    </c:forEach>
+                </c:if>
 
                 </section>
                 <!-- End section 1 -->
