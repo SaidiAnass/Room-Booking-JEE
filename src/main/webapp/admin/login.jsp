@@ -1,8 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.miola.roombooking.models.Admin" %>
-<% Admin admin = (Admin) request.getSession().getAttribute("adminAuth"); %>
-<c:if test="${ adminAuth != null }">
+<c:if test="${ (adminAuth != null )}">
     <c:redirect url="./index.jsp"/>
 </c:if>
 <!DOCTYPE html>
@@ -41,7 +39,7 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="admin-login.auth" method="post">
+    <form action="../admin-login.auth" method="post">
         <h2 class="text-center">Log in</h2>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Email" required="required" name="email">

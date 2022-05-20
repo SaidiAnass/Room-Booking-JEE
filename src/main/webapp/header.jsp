@@ -24,6 +24,8 @@
     <!-- SPECIFIC CSS -->
     <link href="assets/css/shop.css" rel="stylesheet">
 
+    <!-- SPECIFIC CSS -->
+    <link href="assets/css/admin.css" rel="stylesheet">
     <!-- CUSTOM CSS -->
     <link href="assets/css/custom.css" rel="stylesheet">
 
@@ -90,6 +92,11 @@
                         <li class="submenu">
                             <a href="all-rooms-list.jsp" class="show-submenu">All Rooms</a>
                         </li>
+                        <c:if test="${ (loggedIn != null )}">
+                            <li class="submenu">
+                                <a href="profile" class="show-submenu">My profile</a>
+                            </li>
+                        </c:if>
                     </ul>
                 </div><!-- End main-menu -->
 

@@ -87,7 +87,7 @@ public class AdminDao {
             ResultSet rs = stmt.executeQuery(query);
 
             while(rs.next()) {
-                System.out.println("Here");
+                System.out.println("Geeting the admin");
                 return new Admin(rs.getInt("adminId"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("email"), rs.getString("password"));
             }
         } catch (SQLException e) {
