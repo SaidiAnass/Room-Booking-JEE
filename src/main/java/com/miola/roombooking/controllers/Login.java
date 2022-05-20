@@ -69,11 +69,8 @@ public class Login extends HttpServlet {
             String password = request.getParameter("password");
             // auth
             Admin loggedIn = adminDao.getAdminByEmailAndPassword(email,password);
-            String returnPage = ("admin/index.jsp");
-            if(request.getSession().getAttribute("adminAuth") != null){
-                returnPage = ("admin/index.jsp");
-            }
-            else if(loggedIn != null){
+            String returnPage = ("admin");
+            if(loggedIn != null){
                 request.getSession().setAttribute("adminAuth" , loggedIn);
             }else {
                 returnPage=("admin/login.jsp");

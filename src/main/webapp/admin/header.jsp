@@ -1,8 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="com.miola.roombooking.models.Admin" %>
-<% Admin admin = (Admin) request.getSession().getAttribute("adminAuth"); %>
-<c:if test="${ adminAuth == null }">
-    <c:redirect url="./login.jsp"/>
+<c:if test="${ (adminAuth == null )}">
+    <c:redirect url="admin/login.jsp"/>
 </c:if>
 
 <!DOCTYPE html>
